@@ -1,0 +1,23 @@
+.MuiButtonBase-root{
+    width: 233px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 100px !important;
+    border: 1px solid var(--m-3-sys-dark-outline, #938F99) !important;
+    
+}
+.button-title{
+    color: var(--m-3-sys-dark-primary, #D0BCFF);
+    text-align: center;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+    letter-spacing: 0.1px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-transform: lowercase;
+}

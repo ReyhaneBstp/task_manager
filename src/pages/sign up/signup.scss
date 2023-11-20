@@ -1,0 +1,24 @@
+@import "../../common styles/containers.scss";
+@import "../../common styles/inputs.scss";
+@import "../../common styles/forms.scss";
+.signup-container {
+    @include containerStyle;
+    margin-top: 50px;
+    .signup-form{
+        @include formStyle;
+        height: 300px;
+
+        .inputs{
+            @include inputStyles;
+        }
+    }
+    .button-box {
+
+        .account-text{
+            cursor: pointer;
+            color: #D0BCFF;
+            width:max-content;
+
+        }
+    }
+}

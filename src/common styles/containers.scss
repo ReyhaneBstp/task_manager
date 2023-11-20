@@ -1,0 +1,10 @@
+@mixin containerStyle {
+    position: absolute;
+    margin-top: 116px;
+    width: 100%;
+    height: calc(100% - 116px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}

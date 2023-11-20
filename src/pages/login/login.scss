@@ -1,0 +1,37 @@
+@import "../../common styles/inputs.scss";
+@import "../../common styles/containers.scss";
+@import "../../common styles/forms.scss";
+
+.login-container {
+    @include containerStyle;
+        .login-form{
+        @include formStyle;
+        .inputs-container{
+            .inputs{
+                @include inputStyles;
+            }
+            .MuiInputBase-input{
+                color: #E6E0E9;
+            }
+            .MuiInputBase-input::placeholder{
+                color: var(--m-3-sys-dark-on-surface, #E6E0E9);
+                font-family: Roboto;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+                letter-spacing: 0.5px;    
+            }
+        }   
+    }
+    .button-box{
+        display: flex;
+        flex-direction: column;
+        span{
+            margin-top: 10px;
+            cursor: pointer;
+            color: #D0BCFF;
+            
+        }
+    }
+}
