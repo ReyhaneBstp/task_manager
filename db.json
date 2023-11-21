@@ -1,22 +1,32 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "username": "reyhane",
+      "password": "123",
+      "email": "reyhane.bstp@gmail.com",
+      "phone": "01234567890",
+      "id": "16c0baf4-759b-49c2-8df1-d687cc9fcbcd"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "username": "samane",
+      "password": "123",
+      "email": "kjhkhukh",
+      "phone": "675757",
+      "id": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+    },
+    {
+      "username": "jkkjhjkguyjhfdytu",
+      "password": "",
+      "email": "kjgvbhyjlgikgyk",
+      "phone": "khgbkgubikgjb",
+      "id": "8fc3a59d-3ede-4841-9c9d-4482bd729539"
+    },
+    {
+      "username": "kl",
+      "password": "y",
+      "email": "jkj",
+      "phone": "kkk",
+      "id": "673da091-3b52-408b-ac0f-00af6b2c77b6"
     }
-  ],
-  "profile": {
-    "username": "sam",
-    "password": "123",
-    "email": "age@mail.com",
-    "phone": "213541"
-  }
+  ]
 }

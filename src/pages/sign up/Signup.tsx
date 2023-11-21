@@ -4,10 +4,10 @@ import { TextField, Button } from '@mui/material';
 import CustomButton from "../../components/custom button/CustomButton";
 import { useState } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    id: '1',
     username: '',
     password: '',
     email: '',
@@ -25,15 +25,25 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log(formData);
-  
+    const newFormData = {
+      ...formData,
+      id: uuidv4(),
+    };
+
     try {
-      const response = await axios.post('http://localhost:3000/users', formData);
+      const existingUserResponse = await axios.get(`http://localhost:3000/users?username=${newFormData.username}`);
+      if (existingUserResponse.data.length > 0) {
+        console.log('Username already exists');
+        return;
+      }
+
+      const response = await axios.post('http://localhost:3000/users', newFormData);
       console.log('User signed up:', response.data);
     } catch (error) {
       console.error('Error signing up:', error);
     }
   };
+  
   
 
   return (
@@ -46,30 +56,29 @@ const Signup = () => {
               name="username"
               label="username"
               placeholder='username'
-              variant="outlined"
+              variant="filled"
               onChange={handleInputChange}
               InputLabelProps={{
-                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)', marginTop: '10px' },
+                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
               }}
             />
           </div>
 
           <div className='inputs-container'>
-            <TextField
-              className='inputs'
-              label="password"
-              type="password"
-              name="password"
-              placeholder='password'
-              autoComplete="current-password"
-              variant="outlined"
-              onChange={handleInputChange}
-              InputLabelProps={{
-                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)', marginTop: '10px' },
-                shrink: true,
-              }}
-            />
+          <TextField 
+            className='inputs'
+            label="password"
+            type="password"
+            name="password"
+            placeholder='password'
+            onChange={handleInputChange}
+            variant="filled"
+            InputLabelProps={{
+              style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
+              shrink: true,
+            }}
+        />
           </div>
 
           <div className='inputs-container'>
@@ -78,10 +87,10 @@ const Signup = () => {
               label="email"
               name="email"
               placeholder='email'
-              variant="outlined"
+              variant="filled"
               onChange={handleInputChange}
               InputLabelProps={{
-                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)', marginTop: '10px' },
+                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
               }}
             />
@@ -92,10 +101,10 @@ const Signup = () => {
               label="phone"
               placeholder='phone'
               name="phone"
-              variant="outlined"
+              variant="filled"
               onChange={handleInputChange}
               InputLabelProps={{
-                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)', marginTop: '10px' },
+                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
               }}
             />

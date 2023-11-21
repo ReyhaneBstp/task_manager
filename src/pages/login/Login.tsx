@@ -14,10 +14,9 @@ const Login = () => {
                         className='inputs'
                         label="username"
                         placeholder='username'
-                        id="outlined-basic" 
-                        variant="outlined"
+                        variant="filled"
                         InputLabelProps={{
-                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' , marginTop:'10px'},
+                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
                         }} 
                         />   
@@ -27,13 +26,12 @@ const Login = () => {
                         <TextField 
                         className='inputs' 
                         label="password"
-                        id="filled-password-input" 
                         type="password" 
                         placeholder='password'
                         autoComplete="current-password" 
-                        variant="outlined"
+                        variant="filled"
                         InputLabelProps={{
-                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' , marginTop:'10px'},
+                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
                         }}   
                         />
@@ -42,7 +40,9 @@ const Login = () => {
                 </form>
                 
                 <div className='button-box'>
-                    <CustomButton button_title={"login"}></CustomButton>
+                    <div>
+                        <CustomButton button_title={"login"}></CustomButton>
+                    </div>
                     <span>dont have any account?</span>
                 </div>
             </div>
