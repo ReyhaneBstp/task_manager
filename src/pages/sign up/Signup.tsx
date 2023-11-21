@@ -7,12 +7,61 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const Signup = () => {
+  const [usernameError, setUsernameError] = useState(false);
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [emailErrorMsg, setEmailErrorMsg] = useState('');
+  const [phoneError, setPhoneError] = useState(false);
+  const [phoneErrorMsg, setPhoneErrorMsg] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     email: '',
     phone: '',
   });
+
+  const validateInput = () => {
+    let isValid = true;
+    if (formData.username === '') {
+      setUsernameError(true);
+      setUsernameErrorMsg('Username cannot be empty!');
+      isValid = false;
+    } else {
+      setUsernameError(false);
+      setUsernameErrorMsg('');
+    }
+
+    if (formData.password === '') {
+      setPasswordError(true);
+      setPasswordErrorMsg('Password cannot be empty!');
+      isValid = false;
+    } else {
+      setPasswordError(false);
+      setPasswordErrorMsg('');
+    }
+
+    if (formData.email === '') {
+      setEmailError(true);
+      setEmailErrorMsg('Email cannot be empty!');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMsg('');
+    }
+
+    if (formData.phone === '') {
+      setPhoneError(true);
+      setPhoneErrorMsg('Phone number cannot be empty!');
+      isValid = false;
+    } else {
+      setPhoneError(false);
+      setPhoneErrorMsg('');
+    }
+
+    return isValid;
+}
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +74,9 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if (!validateInput()) {
+      return;
+    }
     const newFormData = {
       ...formData,
       id: uuidv4(),
@@ -58,6 +110,8 @@ const Signup = () => {
               placeholder='username'
               variant="filled"
               onChange={handleInputChange}
+              error={usernameError}
+              helperText={usernameErrorMsg}
               InputLabelProps={{
                 style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
@@ -74,6 +128,8 @@ const Signup = () => {
             placeholder='password'
             onChange={handleInputChange}
             variant="filled"
+            error={passwordError}
+            helperText={passwordErrorMsg}
             InputLabelProps={{
               style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
               shrink: true,
@@ -89,6 +145,8 @@ const Signup = () => {
               placeholder='email'
               variant="filled"
               onChange={handleInputChange}
+              error={emailError}
+              helperText={emailErrorMsg}
               InputLabelProps={{
                 style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
@@ -103,6 +161,8 @@ const Signup = () => {
               name="phone"
               variant="filled"
               onChange={handleInputChange}
+              error={phoneError}
+              helperText={phoneErrorMsg}
               InputLabelProps={{
                 style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)' },
                 shrink: true,
