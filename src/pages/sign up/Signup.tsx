@@ -24,11 +24,21 @@ const Signup = () => {
 
   const validateInput = () => {
     let isValid = true;
-    if (formData.username === '') {
+    
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phonePattern = /^(\d{2}\s?)?(\d{7,12})$/;
+    
+    if(formData.username === ''){
       setUsernameError(true);
       setUsernameErrorMsg('Username cannot be empty!');
       isValid = false;
-    } else {
+    } 
+    else if (/\d/.test(formData.username[0])) {
+      setUsernameError(true);
+      setUsernameErrorMsg('Username cannot start with a number!');
+      isValid = false;
+    }
+    else {
       setUsernameError(false);
       setUsernameErrorMsg('');
     }
@@ -42,27 +52,38 @@ const Signup = () => {
       setPasswordErrorMsg('');
     }
 
-    if (formData.email === '') {
+    if(formData.email === ''){
       setEmailError(true);
       setEmailErrorMsg('Email cannot be empty!');
+      isValid = false;
+    }
+  
+    else if (!emailPattern.test(formData.email) ) {
+      setEmailError(true);
+      setEmailErrorMsg('Please enter a valid email!');
       isValid = false;
     } else {
       setEmailError(false);
       setEmailErrorMsg('');
     }
 
-    if (formData.phone === '') {
+    if(formData.phone === ''){
       setPhoneError(true);
       setPhoneErrorMsg('Phone number cannot be empty!');
+      isValid = false;
+    }
+  
+    else if (!phonePattern.test(formData.phone)) {
+      setPhoneError(true);
+      setPhoneErrorMsg('Please enter a valid phone number!');
       isValid = false;
     } else {
       setPhoneError(false);
       setPhoneErrorMsg('');
     }
-
+  
     return isValid;
-}
-
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     
