@@ -5,8 +5,10 @@ import CustomButton from "../../components/custom button/CustomButton";
 import { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { useAppContext } from "../../provider/AppContext";
 
 const Signup = () => {
+  const { user, setGlobalUser } = useAppContext();
   const [usernameError, setUsernameError] = useState(false);
   const [usernameErrorMsg, setUsernameErrorMsg] = useState('');
   const [passwordError, setPasswordError] = useState(false);

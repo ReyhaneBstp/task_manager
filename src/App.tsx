@@ -6,7 +6,8 @@ import { Button } from '@mui/material';
 import Login from './pages/login/Login';
 import Signup from './pages/sign up/Signup';
 import React from 'react';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles'
+import { AppProvider } from './provider/AppContext';
 
 const theme = createTheme({
   palette: {
@@ -19,8 +20,11 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Signup />
+      <AppProvider>
+        <Login />
+      </AppProvider>
     </ThemeProvider>
+  
   )
 }
 

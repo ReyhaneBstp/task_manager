@@ -1,10 +1,42 @@
 import { TextField, Button } from '@mui/material';
+import { useState } from 'react';
 import PageContainer from '../../components/page container/PageContainer';
 import CustomButton from '../../components/custom button/CustomButton';
 import './login.scss'
+import axios from 'axios';
 
 
 const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);   
+    };
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value); 
+    };
+    const handleLogin = async () => {
+    try {
+        const response = await axios.get(`http://localhost:3000/users`);
+        const users = await response.data; 
+        console.log(users);
+        const user = users.find(
+            (user) =>user.username === username && user.password === password
+        );
+        
+        if (user) {
+        console.log('Login successful!');
+        } else {
+        console.log('Login failed. Please check your username and password.');
+        }
+
+      
+    } catch (error) {
+        console.error('Error during login:', error);
+    }
+};
+    
     return (
         <PageContainer title={"Task Manager"}>
             <div className="login-container">
@@ -15,6 +47,7 @@ const Login = () => {
                         label="username"
                         placeholder='username'
                         variant="filled"
+                        onChange={handleUsernameChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
@@ -30,6 +63,7 @@ const Login = () => {
                         placeholder='password'
                         autoComplete="current-password" 
                         variant="filled"
+                        onChange={handlePasswordChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
@@ -41,7 +75,7 @@ const Login = () => {
                 
                 <div className='button-box'>
                     <div>
-                        <CustomButton button_title={"login"}></CustomButton>
+                        <CustomButton button_title={"login"} onClick={handleLogin}></CustomButton>
                     </div>
                     <span>dont have any account?</span>
                 </div>
