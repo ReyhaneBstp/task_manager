@@ -4,6 +4,7 @@ import PageContainer from '../../components/page container/PageContainer';
 import CustomButton from '../../components/custom button/CustomButton';
 import './login.scss'
 import axios from 'axios';
+import { generateFakeToken , login } from '../../auth/AuthService';
 
 
 const Login = () => {
@@ -20,13 +21,16 @@ const Login = () => {
     try {
         const response = await axios.get(`http://localhost:3000/users`);
         const users = await response.data; 
-        console.log(users);
         const user = users.find(
             (user) =>user.username === username && user.password === password
         );
         
         if (user) {
-        console.log('Login successful!');
+            const fakeToken = generateFakeToken(user);
+            localStorage.setItem('token', fakeToken);
+            const isSuccess = await login(user);
+           if(isSuccess)
+               console.log('Login successful!');
         } else {
         console.log('Login failed. Please check your username and password.');
         }

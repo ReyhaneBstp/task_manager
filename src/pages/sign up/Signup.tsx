@@ -6,6 +6,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from "../../provider/AppContext";
+import { generateFakeToken  , isAuthenticated } from "../../auth/AuthService";
 
 const Signup = () => {
   const { user, setGlobalUser } = useAppContext();
@@ -95,7 +96,7 @@ const Signup = () => {
     }));
   };
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = async (e: any) => {
     e.preventDefault();
     if (!validateInput()) {
       return;
@@ -104,22 +105,22 @@ const Signup = () => {
       ...formData,
       id: uuidv4(),
     };
-
+   
     try {
       const existingUserResponse = await axios.get(`http://localhost:3000/users?username=${newFormData.username}`);
       if (existingUserResponse.data.length > 0) {
         console.log('Username already exists');
         return;
       }
-
+   
       const response = await axios.post('http://localhost:3000/users', newFormData);
-      console.log('User signed up:', response.data);
+      const fakeToken = generateFakeToken(newFormData);
+      localStorage.setItem('token', fakeToken);
+      console.log('User signed up :', response.data);
     } catch (error) {
       console.error('Error signing up:', error);
     }
-  };
-  
-  
+   };
 
   return (
     <PageContainer title={"Sign up"}>

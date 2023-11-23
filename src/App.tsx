@@ -13,19 +13,24 @@ const theme = createTheme({
     mode: 'dark',
   },
 });
+import { checkStoredToken } from './auth/AuthService';
 
 function App() {
+  const isUserAuthenticated = checkStoredToken();
+
   return (
     <ThemeProvider theme={theme}>
       <AppProvider>
-          <Router>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
-              <ProtectedRoute path="/todos" component={Home} />
-              <Redirect from="/" to="/login" />
-            </Switch>
-          </Router>
+        <Router>
+          <Switch>
+            <Route path="/login">
+              {isUserAuthenticated ? <Redirect to="/todos" /> : <Login />}
+            </Route>
+            <Route path="/signup" component={Signup} />
+            <ProtectedRoute path="/todos" component={Home} />
+            <Redirect from="/" to="/login" />
+          </Switch>
+        </Router>
       </AppProvider>
     </ThemeProvider>
   );
