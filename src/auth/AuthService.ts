@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { KJUR } from 'jsrsasign';
+import { useAppContext } from '../provider/AppContext';
 
 const API_URL = 'http://localhost:3000';
 const TOKEN_KEY = 'token';
@@ -15,11 +16,8 @@ interface Credentials {
 
 export const login = async (credentials: Credentials): Promise<boolean> => {
   try {
-    const response = await axios.post<{ token: string }>(`${API_URL}/login`, credentials);
-    console.log(response.data);
-    
+    const response = await axios.post<{ token: string }>(`${API_URL}/login`, credentials); 
     const token = localStorage.getItem(TOKEN_KEY);
-    console.log(token);
     
     
     
@@ -40,12 +38,12 @@ export const logout = (): void => {
 
 export const isAuthenticated = (): boolean => {
   const token = localStorage.getItem(TOKEN_KEY);
-  console.log(token);
   
   
   if (token !== null) {
     try {
       jwtDecode(token);
+
       return true;
     } catch(error) {
       return false;

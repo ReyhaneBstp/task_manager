@@ -4,12 +4,14 @@ import PageContainer from '../../components/page container/PageContainer';
 import CustomButton from '../../components/custom button/CustomButton';
 import './login.scss'
 import axios from 'axios';
+import { useAppContext } from '../../provider/AppContext';
 import { generateFakeToken , login } from '../../auth/AuthService';
 
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { setLoginStatus } = useAppContext();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);   
@@ -29,8 +31,10 @@ const Login = () => {
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
             const isSuccess = await login(user);
-           if(isSuccess)
+           if(isSuccess){
                console.log('Login successful!');
+               setLoginStatus(true);
+           }
         } else {
         console.log('Login failed. Please check your username and password.');
         }
