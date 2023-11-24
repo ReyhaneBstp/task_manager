@@ -18,22 +18,16 @@ const theme = createTheme({
 function App() {
 
   const isUserAuthenticated = checkStoredToken();
-  const {isLogin} = useAppContext();
-  console.log(isLogin);
-  
-  
-
-  
 
   return (
     <ThemeProvider theme={theme}>
         <Router>
           <Switch>
             <Route>
-              {isUserAuthenticated && isLogin ? <Redirect to="/todos" /> : <Login />}
-            </Route>
-            <Route exact path="/login" component={Signup} />
             <ProtectedRoute path="/todos" component={Home} />
+              {isUserAuthenticated ? <Redirect to="/todos" /> : <Login />}
+            </Route>
+            <Route exact path="/login" component={Login} />
             <Redirect from="/" to="/login" />
           </Switch>
         </Router>

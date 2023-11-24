@@ -43,7 +43,7 @@ export const isAuthenticated = (): boolean => {
   if (token !== null) {
     try {
       jwtDecode(token);
-
+      // console.log('token', jwtDecode(token));
       return true;
     } catch(error) {
       return false;

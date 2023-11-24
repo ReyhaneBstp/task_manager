@@ -1,0 +1,27 @@
+@import "../../common styles/containers.scss";
+.home-container{
+    @include containerStyle;
+
+    .button-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    span {
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.25px;
+        margin-top: 22px;
+    }
+}

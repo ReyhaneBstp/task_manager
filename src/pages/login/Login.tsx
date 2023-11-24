@@ -11,7 +11,7 @@ import { generateFakeToken , login } from '../../auth/AuthService';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { setLoginStatus } = useAppContext();
+    const { setLoginStatus , setGlobalUser } = useAppContext();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);   
@@ -33,7 +33,6 @@ const Login = () => {
             const isSuccess = await login(user);
            if(isSuccess){
                console.log('Login successful!');
-               setLoginStatus(true);
            }
         } else {
         console.log('Login failed. Please check your username and password.');
@@ -46,7 +45,7 @@ const Login = () => {
 };
     
     return (
-        <PageContainer title={"Task Manager"}>
+        <PageContainer title={"Task Manager"} page={""}>
             <div className="login-container">
                 <form className='login-form'>
                     <div className='inputs-container'>

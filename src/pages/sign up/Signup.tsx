@@ -123,7 +123,7 @@ const Signup = () => {
    };
 
   return (
-    <PageContainer title={"Sign up"}>
+    <PageContainer title={"Sign up"} page={""}>
       <div className="signup-container">
         <form className="signup-form" onSubmit={handleSignUp}>
           <div className='inputs-container'>
