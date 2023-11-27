@@ -10,6 +10,7 @@ import CheckIcon from '../../icons/CheckIcon';
 import { pink, purple } from '@material-ui/core/colors';
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 const Home = () => {
 
     const {user , allTasks} = useAppContext();
@@ -21,6 +22,15 @@ const Home = () => {
     const handleChange =(e , page) =>{
         setstartIndex((page-1)*eachPage );
     }
+
+    const handleCheckboxChange = async (taskId, userId , title, prority, status) => {
+        try {
+            await axios.put(`http://localhost:3000/tasks/${taskId}`, {title,prority,status,taskId,userId });
+        } catch (error) {
+            console.error('Error updating task status:', error);
+        }
+    };
+    
 
     
     return (  
@@ -48,7 +58,11 @@ const Home = () => {
                                 <Checkbox sx={{color:'#D0BCFF', '&.Mui-checked': {
                                     color: '#D0BCFF',
                                     },
-                            }}/>
+                                    
+                            }}
+                            onChange={(e) => handleCheckboxChange(task.id,task.userId,task.title,task.priority, e.target.checked)}
+                            checked={task.status}
+                            />
                             </div>
                             
                             }
