@@ -9,7 +9,7 @@ import { useAppContext } from "../../provider/AppContext";
 import { generateFakeToken  , isAuthenticated } from "../../auth/AuthService";
 
 const Signup = () => {
-  const { user, setGlobalUser } = useAppContext();
+  const {allUsers} = useAppContext();
   const [usernameError, setUsernameError] = useState(false);
   const [usernameErrorMsg, setUsernameErrorMsg] = useState('');
   const [passwordError, setPasswordError] = useState(false);
@@ -107,8 +107,11 @@ const Signup = () => {
     };
    
     try {
-      const existingUserResponse = await axios.get(`http://localhost:3000/users?username=${newFormData.username}`);
-      if (existingUserResponse.data.length > 0) {
+
+      const user = allUsers?.find(
+        (user) =>user.username === newFormData.username
+      );
+      if (user) {
         console.log('Username already exists');
         return;
       }

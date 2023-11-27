@@ -1,55 +1,45 @@
 {
-  "login": [
-    {
-      "username": "klhjvbjv kkj",
-      "password": "7768568",
-      "email": "hjgbhu@nbhj.com",
-      "phone": "56452686",
-      "id": "dc89e6b6-a8f7-44cd-bb85-a13bf2eab4d2"
-    },
-    {
-      "username": "klhjvbjvjkb ",
-      "password": "7768568",
-      "email": "hjgbhu@nbhj.com",
-      "phone": "56452686",
-      "id": "78c6bbd7-bac5-489f-ae13-93a077965c62"
-    },
-    {
-      "username": "klhjvbjvbnjm ",
-      "password": "7768568",
-      "email": "hjgbhu@nbhj.com",
-      "phone": "56452686",
-      "id": "06cbc5ed-c7c0-473f-ae05-9873becd7aec"
-    },
-    {
-      "username": "jkih tdersjkk",
-      "password": "656r76",
-      "email": "rey@gmail.com",
-      "phone": "67565657",
-      "id": "be516756-2bfe-4ecf-a63f-36c36db54ff2"
-    },
-    {
-      "username": "ubhbiuhi",
-      "password": "jhgbhjugbyuhj",
-      "email": "xitaxid809@mustbeit.com",
-      "phone": "09034584783",
-      "id": "55a92950-bbc4-4ceb-ad8f-cb5ff780c227"
-    },
-    {
-      "username": "mio mio",
-      "password": "jhgbhjugbyuhj",
-      "email": "xitaxid809@mustbeit.com",
-      "phone": "09034584783",
-      "id": "b3d734da-0468-4e5f-88de-60939e6a9b0d"
-    },
-    {
-      "username": "samane",
-      "password": "123",
-      "email": "kjhkhukh",
-      "phone": "675757",
-      "id": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
-    }
+  "tasks":[
+    {"title": "Exercise for 30 minutes",
+    "priority":2,
+    "status":true,
+    "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+    "userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+  },
+
+  {"title": "Exercise for 20 minutes",
+  "priority":2,
+  "status":true,
+  "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+  "userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+},
+{"title": "Exercise for 10 minutes",
+"priority":2,
+"status":true,
+"id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+"userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+},
+{"title": "Exercise for 40 minutes",
+"priority":2,
+"status":true,
+"id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+"userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+},
+
+{"title": "Exercise for 50 minutes",
+"priority":2,
+"status":true,
+"id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+"userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+},
+{"title": "Exercise for 60 minutes",
+"priority":2,
+"status":true,
+"id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+"userId":"27a18898-b5df-4d83-b898-9ee542a149d8"
+}
   ],
+ 
   "users": [
     {
       "username": "samane",
@@ -80,7 +70,7 @@
       "id": "088aad14-c282-41b3-a69f-b9c43eb1c850"
     },
     {
-      "username": "reyhoon",
+      "username": "reyhane",
       "password": "000",
       "email": "reyhane.bstp@gmail.com",
       "phone": "12345678",

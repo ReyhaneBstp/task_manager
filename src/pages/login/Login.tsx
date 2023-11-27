@@ -11,7 +11,7 @@ import { generateFakeToken , login } from '../../auth/AuthService';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { setLoginStatus , setGlobalUser } = useAppContext();
+    const {allUsers} = useAppContext();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);   
@@ -21,20 +21,16 @@ const Login = () => {
     };
     const handleLogin = async () => {
     try {
-        const response = await axios.get(`http://localhost:3000/users`);
-        const users = await response.data; 
-        const user = users.find(
+
+        const user = allUsers?.find(
             (user) =>user.username === username && user.password === password
         );
         
         if (user) {
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
-            const isSuccess = await login(user);
-           if(isSuccess){
-               console.log('Login successful!');
-           }
-        } else {
+        }
+         else {
         console.log('Login failed. Please check your username and password.');
         }
 
@@ -81,9 +77,7 @@ const Login = () => {
                 </form>
                 
                 <div className='button-box'>
-                    <div>
-                        <CustomButton button_title={"login"} onClick={handleLogin}></CustomButton>
-                    </div>
+                    <CustomButton button_title={"login"} onClick={handleLogin}></CustomButton>
                     <span>dont have any account?</span>
                 </div>
             </div>

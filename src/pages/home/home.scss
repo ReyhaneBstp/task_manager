@@ -3,17 +3,88 @@
     @include containerStyle;
 
     .button-box{
+        position: absolute;
+        bottom: 76px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .pagination-box{
+        position: absolute;
+        bottom: 123px;
+        .MuiPagination-ul li button{
+            color: var(--m-3-sys-dark-primary, #D0BCFF);
+            .Mui-selected{
+                background-color: #D0BCFF;
+            }
+            
+        }
+        
+    }
 }
 
+.tasks-container{
+    top: 0px;
+    height: 168px;
+    position: absolute;
+    width: 100%;
+    
+    .task-box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 9px 16px;
+        cursor: pointer;
+        .task-title{
+            color: var(--m-3-sys-dark-on-surface, #E6E0E9);
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+        }
+        .task-info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .task-icon{
+                display: flex;
+                margin-right: 16px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 100px;
+                background: var(--m-3-sys-dark-primary-container, #4F378B);
+                color: var(--m-3-sys-dark-on-surface, #E6E0E9);
+                font-family: Roboto;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0.5px;
+                
+            }
+        }
+    }
+    .space-line{
+        height: 1px;
+        background: #D0BCFF;
+        width: calc(100% - 32px);
+        position: absolute;
+        right: 16px;
+        left: 16px;
+    }
+}
 .empty {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: absolute;
+    top: 88px;
     span {
         color: #FFF;
         font-family: Roboto;

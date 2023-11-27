@@ -3,6 +3,7 @@ import './pageContainer.scss'
 import BackIcon from "../../icons/BackIcon";
 import NextIcon from "../../icons/NextIcon";
 import DeleteIcon from "../../icons/DeleteIcon";
+import { logout } from "../../auth/AuthService";
 
   const GrayBox= styled("div")(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -15,18 +16,30 @@ import DeleteIcon from "../../icons/DeleteIcon";
     justifyContent: "center",
     borderRadius:"25px",
   }));
+
+  const handleLogout =()=>{
+    logout();
+    console.log("logout");
+    
+  }
   
 
 const PageContainer = ({children , title , page}) => {
     return ( 
         <GrayBox>
           <div className="title-container">
-            
+           
+
+            {page ==="home" &&
+            <div className="backicon" onClick={handleLogout}>
+            <BackIcon /> 
+            </div> }
+
+            {page ==="edit" &&
             <div className="backicon">
-            {page==="home" &&  <BackIcon />}
-            {page ==="edit" && <DeleteIcon/>}
+            <DeleteIcon/> 
+            </div> }
             
-            </div>
             <h1 className="page-title">{title}</h1>
 
             <div className="nexticon">

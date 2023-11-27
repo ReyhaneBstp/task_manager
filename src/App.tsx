@@ -5,8 +5,10 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './pages/login/Login';
 import Signup from './pages/sign up/Signup';
 import Home from './pages/home/Home';
+import { useEffect } from 'react';
 import './App.css'
 import { checkStoredToken } from './auth/AuthService';
+import axios from 'axios';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +20,33 @@ const theme = createTheme({
 function App() {
 
   const isUserAuthenticated = checkStoredToken();
+  const {setAllUsers , setAllTasks , user , allTasks}=useAppContext();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/users');
+        setAllUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
+  
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/tasks?userId=${user.id}`);
+        setAllTasks(response.data);
+        console.log(allTasks);
+        
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
+    fetchTasks();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
