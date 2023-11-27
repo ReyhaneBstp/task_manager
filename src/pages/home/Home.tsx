@@ -11,9 +11,10 @@ import { pink, purple } from '@material-ui/core/colors';
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getTasks } from './utilities/getTasks';
 const Home = () => {
 
-    const {user , allTasks} = useAppContext();
+    const {user , allTasks , setAllTasks} = useAppContext();
     const [startIndex, setstartIndex] = useState(0);
     const eachPage = 3;
     const handleAdd =()=>{
@@ -23,15 +24,17 @@ const Home = () => {
         setstartIndex((page-1)*eachPage );
     }
 
-    const handleCheckboxChange = async (taskId, userId , title, prority, status) => {
+    const handleCheckboxChange = async (title, priority, status , id, userId) => {
         try {
-            await axios.put(`http://localhost:3000/tasks/${taskId}`, {title,prority,status,taskId,userId });
+            console.log(id);
+            await axios.put(`http://localhost:3000/tasks/${id}`, {title,priority,status,id,userId });
+            const response = await axios.get(`http://localhost:3000/tasks?userId=${userId}`);
+            setAllTasks(response.data);
         } catch (error) {
             console.error('Error updating task status:', error);
         }
     };
     
-
     
     return (  
         <PageContainer title={user.username+"'s Tasks" } page={"home"} >
@@ -60,7 +63,7 @@ const Home = () => {
                                     },
                                     
                             }}
-                            onChange={(e) => handleCheckboxChange(task.id,task.userId,task.title,task.priority, e.target.checked)}
+                            onChange={(e) => handleCheckboxChange(task.title,task.priority,e.target.checked,task.id, task.userId)}
                             checked={task.status}
                             />
                             </div>
@@ -77,7 +80,7 @@ const Home = () => {
 
 
                 <div className='pagination-box'>
-                    <Pagination count={(allTasks?.length)/3}  siblingCount={0} onChange={handleChange}  sx={{
+                    <Pagination count={Math.ceil((allTasks?.length)/3)}  siblingCount={0} onChange={handleChange}  sx={{
                             '& .Mui-selected': {
                                 backgroundColor: '#D0BCFF !important', 
                                 color: '#2B2930 !important' , 

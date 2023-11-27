@@ -1,18 +1,10 @@
 {
   "tasks": [
     {
-      "title": "Exercise for 30 minutes",
-      "prority": 2,
-      "status": true,
-      "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
-      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
-      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c"
-    },
-    {
-      "title": "Exercise for 20 minutes",
+      "title": "Exercise for 10 minutes",
       "priority": 2,
-      "status": true,
-      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+      "status": false,
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b6a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
@@ -25,22 +17,22 @@
     {
       "title": "Exercise for 40 minutes",
       "priority": 2,
-      "status": true,
-      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+      "status": false,
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b064999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "Exercise for 50 minutes",
       "priority": 2,
       "status": true,
-      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a499c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "Exercise for 60 minutes",
       "priority": 2,
       "status": true,
-      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+      "id": "9h2aca21-a8f5-4f8d-975-bd20b06a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     }
   ],

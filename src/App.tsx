@@ -39,7 +39,6 @@ function App() {
       try {
         const response = await axios.get(`http://localhost:3000/tasks?userId=${user.id}`);
         setAllTasks(response.data);
-        console.log(allTasks);
         
       } catch (error) {
         console.error('Error fetching tasks:', error);
