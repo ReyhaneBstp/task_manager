@@ -6,12 +6,14 @@ import './login.scss'
 import axios from 'axios';
 import { useAppContext } from '../../provider/AppContext';
 import { generateFakeToken , login } from '../../auth/AuthService';
+import { useHistory } from 'react-router-dom';
 
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const {allUsers} = useAppContext();
+    const {allUsers , setGlobalUser} = useAppContext();
+    const history = useHistory();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);   
@@ -29,6 +31,9 @@ const Login = () => {
         if (user) {
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
+            setGlobalUser(user);
+            history.push('/todos');
+            
         }
          else {
         console.log('Login failed. Please check your username and password.');

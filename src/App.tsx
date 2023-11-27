@@ -34,30 +34,18 @@ function App() {
     fetchUsers();
   }, []);
   
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/tasks?userId=${user.id}`);
-        setAllTasks(response.data);
-        
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
-      }
-    };
-    fetchTasks();
-  }, []);
+
 
   return (
     <ThemeProvider theme={theme}>
         <Router>
-          <Switch>
-            <Route>
-            <ProtectedRoute path="/todos" component={Home} />
-              {isUserAuthenticated ? <Redirect to="/todos" /> : <Login />}
-            </Route>
-            <Route exact path="/login" component={Login} />
-            <Redirect from="/" to="/login" />
-          </Switch>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route path="/todos">
+            <ProtectedRoute component={Home} />
+          </Route>
+          <Redirect from="/" to="/login" />
+        </Switch>
         </Router>
     </ThemeProvider>
   );

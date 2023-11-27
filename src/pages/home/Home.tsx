@@ -1,20 +1,16 @@
-import { jwtDecode } from 'jwt-decode';
 import PageContainer from "../../components/page container/PageContainer";
 import EmptyIcon from '../../icons/EmptyIcon';
 import './home.scss'
 import CustomButton from '../../components/custom button/CustomButton';
 import { useAppContext } from '../../provider/AppContext';
 import  Checkbox  from '@mui/material/Checkbox';
-import { FormControlLabel } from '@mui/material';
-import CheckIcon from '../../icons/CheckIcon';
-import { pink, purple } from '@material-ui/core/colors';
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getTasks } from './utilities/getTasks';
+
 const Home = () => {
 
-    const {user , allTasks , setAllTasks} = useAppContext();
+    const {user , allTasks , setAllTasks } = useAppContext();
     const [startIndex, setstartIndex] = useState(0);
     const eachPage = 3;
     const handleAdd =()=>{
@@ -34,6 +30,19 @@ const Home = () => {
             console.error('Error updating task status:', error);
         }
     };
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3000/tasks?userId=${user.id}`);
+            setAllTasks(response.data);
+            
+          } catch (error) {
+            console.error('Error fetching tasks:', error);
+          }
+        };
+        fetchTasks();
+      }, []);
     
     
     return (  
@@ -47,6 +56,7 @@ const Home = () => {
                     </div>
                 }
                 {(allTasks?.length >0) &&
+                <>
                     <div className="tasks-container">
                         {allTasks?.map((task , index) => (
                             <>
@@ -76,17 +86,21 @@ const Home = () => {
                         ))}
                         
                     </div>
-                }
 
-
-                <div className='pagination-box'>
+                    <div className='pagination-box'>
                     <Pagination count={Math.ceil((allTasks?.length)/3)}  siblingCount={0} onChange={handleChange}  sx={{
                             '& .Mui-selected': {
                                 backgroundColor: '#D0BCFF !important', 
                                 color: '#2B2930 !important' , 
                             },
                         }}/>
-                </div>
+                    </div>
+
+                </>
+                }
+
+
+
 
                 <div className='button-box'>
                     <CustomButton button_title={"+  Task"} onClick={handleAdd}/>

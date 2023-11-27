@@ -4,6 +4,7 @@ import BackIcon from "../../icons/BackIcon";
 import NextIcon from "../../icons/NextIcon";
 import DeleteIcon from "../../icons/DeleteIcon";
 import { logout } from "../../auth/AuthService";
+import { useHistory } from "react-router-dom";
 
   const GrayBox= styled("div")(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -17,14 +18,19 @@ import { logout } from "../../auth/AuthService";
     borderRadius:"25px",
   }));
 
-  const handleLogout =()=>{
-    logout();
-    console.log("logout");
-    
-  }
+ 
   
 
 const PageContainer = ({children , title , page}) => {
+
+   const history = useHistory();
+   const handleLogout =()=>{
+    logout();
+    history.push('/login');
+    console.log("logout");
+    
+  }
+
     return ( 
         <GrayBox>
           <div className="title-container">
