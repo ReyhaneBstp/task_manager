@@ -99,9 +99,6 @@ const Home = () => {
                 </>
                 }
 
-
-
-
                 <div className='button-box'>
                     <CustomButton button_title={"+  Task"} onClick={handleAdd}/>
                 </div>

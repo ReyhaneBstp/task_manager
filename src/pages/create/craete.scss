@@ -1,0 +1,31 @@
+@import "../../common styles/inputs.scss";
+@import "../../common styles/containers.scss";
+@import "../../common styles/forms.scss";
+
+.create-container {
+    @include containerStyle;
+        .create-form{
+        @include formStyle;
+        .inputs-container{
+            .MuiInputBase-input{
+                @include inputStyles;
+            }
+        }   
+    }
+    .button-box{
+
+        height: 60px;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+
+        span{
+            cursor: pointer;
+            color: #D0BCFF; 
+        }
+        .account-text:hover{
+            transition: 0.8s;
+            color:#E6E0E9;
+        }
+    }
+}

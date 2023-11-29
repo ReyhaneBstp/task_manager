@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import './App.css'
 import { checkStoredToken } from './auth/AuthService';
 import axios from 'axios';
+import Create from './pages/create/Create';
 
 const theme = createTheme({
   palette: {
@@ -42,7 +43,12 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route path="/todos">
-            <ProtectedRoute component={Home} />
+            <ProtectedRoute  component={Home} />
+            {isUserAuthenticated ? <Redirect to="/todos" /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/create">
+            <ProtectedRoute  component={Create} />
+            {isUserAuthenticated ? <Redirect to="/create" /> : <Redirect to="/login" />}
           </Route>
           <Redirect from="/" to="/login" />
         </Switch>
