@@ -6,18 +6,23 @@ import './login.scss'
 import { useAppContext } from '../../provider/AppContext';
 import { generateFakeToken } from '../../auth/AuthService';
 import { useHistory } from 'react-router-dom';
+import { validateUsername , validatePassword } from '../../utilities/validateInputs';
 
 interface User {
     username: string;
     password: string;
     email: string;
-    phone:number;
+    phone:string;
     id:string;
 }
 
 const Login = () => {
     const [username, setUsername] = useState <string>('');
     const [password, setPassword] = useState <string>('');
+    const [usernameError, setUsernameError]  = useState <boolean>(false);
+    const [usernameErrorMsg, setUsernameErrorMsg] = useState <string>('');
+    const [passwordError, setPasswordError] = useState <boolean>(false);
+    const [passwordErrorMsg, setPasswordErrorMsg] = useState <string>('');
     const {allUsers , setGlobalUser} = useAppContext() as {allUsers: User[] , setGlobalUser: React.Dispatch<React.SetStateAction<User>>};
     const history = useHistory();
 
@@ -27,7 +32,26 @@ const Login = () => {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value); 
     };
+
+    const validateInput = () => {
+
+        const usernameValidation = validateUsername(username);
+        const passwordValidation = validatePassword(password);
+    
+        setUsernameError(!usernameValidation.isValid);
+        setUsernameErrorMsg(usernameValidation.errorMessage);
+        setPasswordError(!passwordValidation.isValid);
+        setPasswordErrorMsg(passwordValidation.errorMessage);
+    
+        return (
+          usernameValidation.isValid && passwordValidation.isValid
+        );
+    };
     const handleLogin = async () => {
+
+    if (!validateInput()) {
+        return;
+        }
     try {
 
         const user : ( User | undefined)  = allUsers?.find(
@@ -62,6 +86,8 @@ const Login = () => {
                         label="username"
                         placeholder='username'
                         variant="filled"
+                        error={usernameError}
+                        helperText={usernameErrorMsg}
                         onChange={handleUsernameChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
@@ -78,6 +104,8 @@ const Login = () => {
                         placeholder='password'
                         autoComplete="current-password" 
                         variant="filled"
+                        error={passwordError}
+                        helperText={passwordErrorMsg}
                         onChange={handlePasswordChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
