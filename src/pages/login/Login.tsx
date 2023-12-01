@@ -31,6 +31,7 @@ const Login = () => {
         if (user) {
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
+            localStorage.setItem('isAuthenticated', 'true');
             setGlobalUser(user);
             history.push('/todos');
             

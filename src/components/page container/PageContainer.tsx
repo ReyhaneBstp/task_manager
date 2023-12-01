@@ -5,6 +5,7 @@ import NextIcon from "../../icons/NextIcon";
 import DeleteIcon from "../../icons/DeleteIcon";
 import { logout } from "../../auth/AuthService";
 import { useHistory } from "react-router-dom";
+import { useAppContext } from "../../provider/AppContext";
 
   const GrayBox= styled("div")(({ theme }) => ({
     padding: theme.spacing(0, 2),
@@ -26,9 +27,8 @@ const PageContainer = ({children , title , page}) => {
    const history = useHistory();
    const handleLogout =()=>{
     logout();
+    localStorage.removeItem('isAuthenticated');
     history.push('/login');
-    console.log("logout");
-    
   }
 
     return ( 

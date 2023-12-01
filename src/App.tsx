@@ -7,7 +7,6 @@ import Signup from './pages/sign up/Signup';
 import Home from './pages/home/Home';
 import { useEffect } from 'react';
 import './App.css'
-import { checkStoredToken } from './auth/AuthService';
 import axios from 'axios';
 import Create from './pages/create/Create';
 
@@ -20,8 +19,10 @@ const theme = createTheme({
 
 function App() {
 
-  const isUserAuthenticated = checkStoredToken();
-  const {setAllUsers , setAllTasks , user , allTasks}=useAppContext();
+  const isUserAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const {setAllUsers , isLogin }=useAppContext();
+  console.log(isUserAuthenticated);
+  
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -41,17 +42,18 @@ function App() {
     <ThemeProvider theme={theme}>
         <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login">
+            {isUserAuthenticated ? <Redirect to="/todos" /> : <Login />}
+          </Route>
           <Route path="/todos">
-            <ProtectedRoute  component={Home} />
-            {isUserAuthenticated ? <Redirect to="/todos" /> : <Redirect to="/login" />}
+            {isUserAuthenticated ? <Home /> :<Redirect to="/login" /> }
           </Route>
           <Route path="/create">
-            <ProtectedRoute  component={Create} />
-            {isUserAuthenticated ? <Redirect to="/create" /> : <Redirect to="/login" />}
+            {isUserAuthenticated ? <Create /> : <Redirect to="/login" /> }
           </Route>
           <Redirect from="/" to="/login" />
         </Switch>
+
         </Router>
     </ThemeProvider>
   );

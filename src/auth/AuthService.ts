@@ -16,6 +16,9 @@ interface Credentials {
 
 export const logout = (): void => {
   localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem('isAuthenticated');
+  console.log("logout2");
+  
 
 };
 

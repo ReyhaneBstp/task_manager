@@ -10,7 +10,7 @@
     {
       "title": "Exercise for 10 minutes",
       "priority": 2,
-      "status": false,
+      "status": true,
       "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
@@ -38,7 +38,7 @@
     {
       "title": "read a book",
       "priority": "3",
-      "status": false,
+      "status": true,
       "id": "9cd8f273-2a08-4d08-a647-8d31806e1917",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     }
