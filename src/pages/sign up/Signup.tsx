@@ -7,6 +7,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from "../../provider/AppContext";
 import { generateFakeToken } from "../../auth/AuthService";
+import { validateEmail , validatePassword , validatePhone , validateUsername } from "../../utilities/validateInputs";
 
 
 interface User {
@@ -36,67 +37,28 @@ const Signup :  React.FC = () => {
   });
 
   const validateInput = () => {
-    let isValid : boolean = true;
-    
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phonePattern = /^(\d{2}\s?)?(\d{7,12})$/;
-    
-    if(formData.username === ''){
-      setUsernameError(true);
-      setUsernameErrorMsg('Username cannot be empty!');
-      isValid = false;
-    } 
-    else if (/\d/.test(formData.username[0])) {
-      setUsernameError(true);
-      setUsernameErrorMsg('Username cannot start with a number!');
-      isValid = false;
-    }
-    else {
-      setUsernameError(false);
-      setUsernameErrorMsg('');
-    }
 
-    if (formData.password === '') {
-      setPasswordError(true);
-      setPasswordErrorMsg('Password cannot be empty!');
-      isValid = false;
-    } else {
-      setPasswordError(false);
-      setPasswordErrorMsg('');
-    }
+    const usernameValidation = validateUsername(formData.username);
+    const passwordValidation = validatePassword(formData.password);
+    const emailValidation = validateEmail(formData.email);
+    const phoneValidation = validatePhone(formData.phone);
 
-    if(formData.email === ''){
-      setEmailError(true);
-      setEmailErrorMsg('Email cannot be empty!');
-      isValid = false;
-    }
-  
-    else if (!emailPattern.test(formData.email) ) {
-      setEmailError(true);
-      setEmailErrorMsg('Please enter a valid email!');
-      isValid = false;
-    } else {
-      setEmailError(false);
-      setEmailErrorMsg('');
-    }
+    setUsernameError(!usernameValidation.isValid);
+    setUsernameErrorMsg(usernameValidation.errorMessage);
+    setPasswordError(!passwordValidation.isValid);
+    setPasswordErrorMsg(passwordValidation.errorMessage);
+    setEmailError(!emailValidation.isValid);
+    setEmailErrorMsg(emailValidation.errorMessage);
+    setPhoneError(!phoneValidation.isValid);
+    setPhoneErrorMsg(phoneValidation.errorMessage);
 
-    if(formData.phone === ''){
-      setPhoneError(true);
-      setPhoneErrorMsg('Phone number cannot be empty!');
-      isValid = false;
-    }
-  
-    else if (!phonePattern.test(formData.phone)) {
-      setPhoneError(true);
-      setPhoneErrorMsg('Please enter a valid phone number!');
-      isValid = false;
-    } else {
-      setPhoneError(false);
-      setPhoneErrorMsg('');
-    }
-  
-    return isValid;
+
+    return (
+      usernameValidation.isValid && passwordValidation.isValid && 
+      emailValidation.isValid && phoneValidation.isValid 
+    );
   };
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     

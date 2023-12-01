@@ -1,14 +1,13 @@
 import { BrowserRouter as Router, Route, Switch , Redirect } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { useAppContext } from './provider/AppContext';
-import ProtectedRoute from './ProtectedRoute';
 import Login from './pages/login/Login';
-import Signup from './pages/sign up/Signup';
 import Home from './pages/home/Home';
 import { useEffect } from 'react';
 import './App.css'
 import axios from 'axios';
 import Create from './pages/create/Create';
+import Signup from './pages/sign up/Signup';
 
 const theme = createTheme({
   palette: {
@@ -17,11 +16,10 @@ const theme = createTheme({
 });
 
 
-function App() {
+const App: React.FC = () => { 
 
-  const isUserAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  const {setAllUsers , isLogin }=useAppContext();
-  console.log(isUserAuthenticated);
+  const isUserAuthenticated  : boolean= localStorage.getItem('isAuthenticated') === 'true';
+  const {setAllUsers}=useAppContext();
   
 
   useEffect(() => {
@@ -50,6 +48,9 @@ function App() {
           </Route>
           <Route path="/create">
             {isUserAuthenticated ? <Create /> : <Redirect to="/login" /> }
+          </Route>
+          <Route path="/signup">
+            <Signup/>
           </Route>
           <Redirect from="/" to="/login" />
         </Switch>
