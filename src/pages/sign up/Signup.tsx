@@ -6,27 +6,37 @@ import { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from "../../provider/AppContext";
-import { generateFakeToken  , isAuthenticated } from "../../auth/AuthService";
+import { generateFakeToken } from "../../auth/AuthService";
 
-const Signup = () => {
-  const {allUsers} = useAppContext();
-  const [usernameError, setUsernameError] = useState(false);
-  const [usernameErrorMsg, setUsernameErrorMsg] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const [passwordErrorMsg, setPasswordErrorMsg] = useState('');
-  const [emailError, setEmailError] = useState(false);
-  const [emailErrorMsg, setEmailErrorMsg] = useState('');
-  const [phoneError, setPhoneError] = useState(false);
-  const [phoneErrorMsg, setPhoneErrorMsg] = useState('');
-  const [formData, setFormData] = useState({
+
+interface User {
+  username: string;
+  password:string;
+  email: string;
+  phone:string;
+  id:string;
+}
+
+const Signup :  React.FC = () => {
+  const {allUsers} = useAppContext() as {allUsers : User[]};
+  const [usernameError, setUsernameError]  = useState <boolean>(false);
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState <string>('');
+  const [passwordError, setPasswordError] = useState <boolean>(false);
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState <string>('');
+  const [emailError, setEmailError] = useState <boolean> (false);
+  const [emailErrorMsg, setEmailErrorMsg] = useState <string>('');
+  const [phoneError, setPhoneError] = useState <boolean>(false);
+  const [phoneErrorMsg, setPhoneErrorMsg] = useState <string>('');
+  const [formData, setFormData] = useState <User>({
     username: '',
     password: '',
     email: '',
     phone: '',
+    id:'',
   });
 
   const validateInput = () => {
-    let isValid = true;
+    let isValid : boolean = true;
     
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phonePattern = /^(\d{2}\s?)?(\d{7,12})$/;
@@ -87,7 +97,7 @@ const Signup = () => {
   
     return isValid;
   };
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
     setFormData((prevData) => ({
