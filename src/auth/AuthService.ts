@@ -6,11 +6,11 @@ import { KJUR } from 'jsrsasign';
 const API_URL = 'http://localhost:3000';
 const TOKEN_KEY = 'token';
 
-interface Credentials {
+interface User {
   username: string;
   password: string;
   email: string;
-  phone: string;
+  phone: number;
   id: string;
 }
 
@@ -53,7 +53,7 @@ export const checkStoredToken = (): boolean => {
 
 const SECRET_KEY = 'my_secret_key';
 
-export const generateFakeToken = (credentials: Credentials): string => {
+export const generateFakeToken = (credentials: User): string => {
   const header = { alg: "HS256", typ: "JWT" };
   const data = {
     username: credentials.username,

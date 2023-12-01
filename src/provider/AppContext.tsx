@@ -11,6 +11,7 @@ interface AppContextType {
 
 interface User {
   username: string;
+  password: string;
   email: string;
   phone:number;
   id:string;
@@ -18,7 +19,7 @@ interface User {
 
 interface Task {
   title: string;
-  priority:number;
+  priority:string;
   status:boolean;
   id:string;
   userId:string;

@@ -3,28 +3,34 @@ import { useState } from 'react';
 import PageContainer from '../../components/page container/PageContainer';
 import CustomButton from '../../components/custom button/CustomButton';
 import './login.scss'
-import axios from 'axios';
 import { useAppContext } from '../../provider/AppContext';
-import { generateFakeToken , login } from '../../auth/AuthService';
+import { generateFakeToken } from '../../auth/AuthService';
 import { useHistory } from 'react-router-dom';
 
+interface User {
+    username: string;
+    password: string;
+    email: string;
+    phone:number;
+    id:string;
+}
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const {allUsers , setGlobalUser} = useAppContext();
+    const [username, setUsername] = useState <string>('');
+    const [password, setPassword] = useState <string>('');
+    const {allUsers , setGlobalUser} = useAppContext() as {allUsers: User[] , setGlobalUser: React.Dispatch<React.SetStateAction<User>>};
     const history = useHistory();
 
-    const handleUsernameChange = (e) => {
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);   
     };
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value); 
     };
     const handleLogin = async () => {
     try {
 
-        const user = allUsers?.find(
+        const user : ( User | undefined)  = allUsers?.find(
             (user) =>user.username === username && user.password === password
         );
         

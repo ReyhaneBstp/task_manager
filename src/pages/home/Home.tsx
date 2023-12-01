@@ -17,7 +17,7 @@ interface User {
   
   interface Task {
     title: string;
-    priority:number;
+    priority:string;
     status:boolean;
     id:string;
     userId:string;

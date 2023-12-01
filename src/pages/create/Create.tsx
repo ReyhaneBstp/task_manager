@@ -10,8 +10,9 @@ import { useAppContext } from '../../provider/AppContext';
 
 interface User {
     username: string;
+    password : string;
     email: string;
-    phone:number;
+    phone: number;
     id:string;
 }
 const Create = () => {
