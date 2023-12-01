@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { KJUR } from 'jsrsasign';
-import { useAppContext } from '../provider/AppContext';
+
 
 const API_URL = 'http://localhost:3000';
 const TOKEN_KEY = 'token';
@@ -14,23 +14,31 @@ interface Credentials {
   id: string;
 }
 
+interface JWTToken {
+  username: string;
+  email: string;
+  phone: string;
+  id: string;
+  iat: number;
+  exp: number;
+}
+
 export const logout = (): void => {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem('isAuthenticated');
-  console.log("logout2");
-  
-
 };
 
 export const isAuthenticated = (): boolean => {
   const token = localStorage.getItem(TOKEN_KEY);
   
-  
   if (token !== null) {
     try {
-      jwtDecode(token);
+      const decodedToken: JWTToken = jwtDecode(token);
       return true;
-    } catch(error) {
+    } catch(error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
       return false;
     }
   }
@@ -38,7 +46,7 @@ export const isAuthenticated = (): boolean => {
   return false;
 };
 
-export const checkStoredToken = () => {
+export const checkStoredToken = (): boolean => {
   const token = localStorage.getItem(TOKEN_KEY);
   return token ? true : false;
 };

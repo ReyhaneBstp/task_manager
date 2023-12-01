@@ -6,21 +6,27 @@ import './craete.scss'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from '../../provider/AppContext';
-import { useHistory } from 'react-router-dom';
 
+
+interface User {
+    username: string;
+    email: string;
+    phone:number;
+    id:string;
+}
 const Create = () => {
-    const {user } = useAppContext();
-    const [title, setTaskName] = useState('');
-    const [priority, setPriority] = useState('');
+    const {user } = useAppContext() as { user: User };
+    const [title, setTaskName] = useState <string>('');
+    const [priority, setPriority] = useState <string>('');
 
-    const handleNameChange = (e) => {
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTaskName(e.target.value);   
     };
-    const handlePriorityChange = (e) => {
+    const handlePriorityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPriority(e.target.value); 
     };
 
-    const handleCreate = async () =>{
+    const handleCreate : () => void = async () => {
         const data = {
             title: title,
             priority: priority,

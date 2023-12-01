@@ -1,10 +1,8 @@
-import { createContext, useContext, ReactNode, useState , useEffect } from 'react'
+import { createContext, useContext, ReactNode, useState } from 'react'
 import { jwtDecode } from 'jwt-decode';
 interface AppContextType {
   user: User | null;
   setGlobalUser: (user: User | null) => void;
-  isLogin: boolean;
-  setLoginStatus: (status: boolean) => void;
   allUsers: User[] | null;
   setAllUsers: (users: User[] | null) => void;
   allTasks: Task[] | null;
@@ -32,7 +30,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const token = localStorage.getItem('token');
-  const decodedToken = token ? jwtDecode(token) : null;
+  const decodedToken : (User | null) = token ? jwtDecode(token) : null;
   const [user, setUser] = useState<User | null>(decodedToken);
   const [allUsers, setAllUsers] = useState<User[] | null>(null);
   const [allTasks , setAllTasks] = useState<Task[] | null>(null);
@@ -51,6 +49,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setAllUsers,
     allTasks,
     setAllTasks,
+    
   };
 
   return (
