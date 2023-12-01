@@ -8,19 +8,35 @@ import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Home = () => {
+interface User {
+    username: string;
+    email: string;
+    phone:number;
+    id:string;
+  }
+  
+  interface Task {
+    title: string;
+    priority:number;
+    status:boolean;
+    id:string;
+    userId:string;
+  }
 
-    const {user , allTasks , setAllTasks } = useAppContext();
-    const [startIndex, setstartIndex] = useState(0);
-    const eachPage = 3;
-    const handleAdd =()=>{
+const Home : React.FC = () => {
+
+    const {user , allTasks , setAllTasks } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>>};
+    const [startIndex, setstartIndex] = useState<number>(0);
+    const eachPage: number = 3;
+
+    const handleAdd :()=>void = ()=>{
         console.log("add"); 
     }
-    const handleChange =(e , page) =>{
+    const handleChange =(e: React.ChangeEvent<unknown>, page: number) =>{
         setstartIndex((page-1)*eachPage );
     }
 
-    const handleCheckboxChange = async (title, priority, status , id, userId) => {
+    const handleCheckboxChange = async (title:string , priority: string , status:boolean , id: string, userId : string) => {
         try {
             console.log(id);
             await axios.put(`http://localhost:3000/tasks/${id}`, {title,priority,status,id,userId });
@@ -60,7 +76,6 @@ const Home = () => {
                     <div className="tasks-container">
                         {allTasks?.map((task , index) => (
                             <>
-                            
                             
                             {index>=startIndex && index<startIndex+eachPage &&
                             <div className="task-box">
