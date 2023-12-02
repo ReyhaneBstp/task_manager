@@ -39,3 +39,17 @@ export interface ValidationResponse {
     }
     return { isValid: true, errorMessage: '' };
   };
+
+  export const validateTaskTitle = (title: string): ValidationResponse => {
+    if (title === '') {
+      return { isValid: false, errorMessage: 'title cannot be empty!' };
+    } 
+    return { isValid: true, errorMessage: '' };
+  };
+
+  export const validateTaskPriority = (priority: string): ValidationResponse => {
+    if (priority === '') {
+      return { isValid: false, errorMessage: 'priority cannot be empty!' };
+    } 
+    return { isValid: true, errorMessage: '' };
+  };

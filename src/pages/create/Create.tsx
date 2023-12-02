@@ -6,6 +6,7 @@ import './craete.scss'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from '../../provider/AppContext';
+import { validateTaskTitle , validateTaskPriority } from "../../utilities/validateInputs";
 
 
 interface User {
@@ -19,6 +20,10 @@ const Create = () => {
     const {user } = useAppContext() as { user: User };
     const [title, setTaskName] = useState <string>('');
     const [priority, setPriority] = useState <string>('');
+    const [titleError, setTitleError]  = useState <boolean>(false);
+    const [titleErrorMsg, setTitleErrorMsg] = useState <string>('');
+    const [priorityError, setPriorityError] = useState <boolean>(false);
+    const [priorityErrorMsg, setPriorityErrorMsg] = useState <string>('');
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTaskName(e.target.value);   
@@ -27,7 +32,24 @@ const Create = () => {
         setPriority(e.target.value); 
     };
 
+    
+    const validateInput = () => {
+
+        const titleValidation = validateTaskTitle(title);
+        const priorityValidation = validateTaskPriority(priority);
+    
+        setTitleError(!titleValidation.isValid);
+        setTitleErrorMsg(titleValidation.errorMessage);
+        setPriorityError(!priorityValidation.isValid);
+        setPriorityErrorMsg(priorityValidation.errorMessage);
+    
+        return (
+          titleValidation.isValid && priorityValidation.isValid
+        );
+    };
+
     const handleCreate : () => void = async () => {
+
         const data = {
             title: title,
             priority: priority,
@@ -35,6 +57,10 @@ const Create = () => {
             id: uuidv4(),
             userId: user?.id
         };
+
+        if (!validateInput()) {
+            return;
+        }
         try {
             await axios.post(`http://localhost:3000/tasks`, data);
             console.log('created');
@@ -53,6 +79,8 @@ const Create = () => {
                         label="name"
                         placeholder='name'
                         variant="filled"
+                        error={titleError}
+                        helperText={titleErrorMsg}
                         onChange={handleNameChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
@@ -67,6 +95,8 @@ const Create = () => {
                         label="priority"
                         placeholder='priority'
                         variant="filled"
+                        error={priorityError}
+                        helperText={priorityErrorMsg}
                         onChange={handlePriorityChange}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
