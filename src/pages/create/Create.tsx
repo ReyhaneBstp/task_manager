@@ -7,6 +7,9 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from '../../provider/AppContext';
 import { validateTaskTitle , validateTaskPriority } from "../../utilities/validateInputs";
+import { Select, MenuItem } from '@mui/material';
+import { blue } from "@material-ui/core/colors";
+
 
 
 interface User {
@@ -28,9 +31,10 @@ const Create = () => {
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTaskName(e.target.value);   
     };
-    const handlePriorityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPriority(e.target.value); 
+    const handlePriorityChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        setPriority(e.target.value as string);
     };
+    
 
     
     const validateInput = () => {
@@ -90,20 +94,33 @@ const Create = () => {
                     </div>
 
                     <div className='inputs-container'>
-                        <TextField 
-                        className='inputs' 
-                        label="priority"
-                        placeholder='priority'
-                        variant="filled"
-                        error={priorityError}
-                        helperText={priorityErrorMsg}
-                        onChange={handlePriorityChange}
-                        InputLabelProps={{
-                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
-                            shrink: true,
-                        }}   
-                        />
+                        <div className="input-title"> priority</div>
+                        <Select 
+                            className='select-proprity'
+                            label="priority"
+                            value={priority}
+                            onChange={handlePriorityChange}
+                            displayEmpty
+                            variant="filled"
+                            error={priorityError}
+                            helperText={priorityErrorMsg}
+                            InputLabelProps={{
+                                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
+                                shrink: true,
+                            }}
+                            sx={{
+                                textAlign:'left',
+                    
+                            }}
+                        >
+                            <MenuItem  className="menu-item" value="" disabled>Select Priority</MenuItem>
+                            <MenuItem className="menu-item" value="low">Low</MenuItem>
+                            <MenuItem className="menu-item" value="medium">Medium</MenuItem>
+                            <MenuItem className="menu-item" value="high">High</MenuItem>
+                        </Select>
+                        {priorityError && <p className="error-message">{priorityErrorMsg}</p>}
                     </div>
+
                     
                 </form>
                 
