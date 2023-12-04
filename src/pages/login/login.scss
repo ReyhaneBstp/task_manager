@@ -7,9 +7,38 @@
         .login-form{
         @include formStyle;
         .inputs-container{
+            position: relative;
+            .input-icon{
+                position: absolute;
+                z-index: 15;
+                right: 16px;
+                top: 16px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.8s;
+            
+            }
+            .input-icon.show {
+                opacity: 1;
+            }
+            .password-icon{
+                position: absolute;
+                z-index: 15;
+                right: 16px;
+                top: 16px;
+                cursor: pointer;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+
+            }
             .MuiInputBase-input{
                 @include inputStyles;
             }
+
         }   
     }
     .button-box{

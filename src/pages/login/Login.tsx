@@ -8,6 +8,10 @@ import { generateFakeToken } from '../../auth/AuthService';
 import { useHistory } from 'react-router-dom';
 import { validateUsername , validatePassword } from '../../utilities/validateInputs';
 import  axios  from 'axios';
+import DeleteInput from '../../icons/DeleteInput';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton';
 
 interface User {
     username: string;
@@ -20,6 +24,8 @@ interface User {
 const Login = () => {
     const [username, setUsername] = useState <string>('');
     const [password, setPassword] = useState <string>('');
+    const [showCloseIcon, setshowCloseIcon] = useState <boolean>(false);
+    const [showPassword, setShowPassword] = useState <boolean>(false);
     const [usernameError, setUsernameError]  = useState <boolean>(false);
     const [usernameErrorMsg, setUsernameErrorMsg] = useState <string>('');
     const [passwordError, setPasswordError] = useState <boolean>(false);
@@ -41,11 +47,26 @@ const Login = () => {
       }, []);
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUsername(e.target.value);   
+        setUsername(e.target.value);  
+        if(e.target.value !== ''){
+            setshowCloseIcon(true);
+        } 
+        else{
+            setshowCloseIcon(false);
+        }
     };
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value); 
     };
+
+    const handleDeleteInput : ()=> void =()=>{
+        setUsername('');
+        setshowCloseIcon(false);
+    }
+
+    const handleTogglePasswordVisibility = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+      };
 
     const goToSignup :() => void = ()=>{
         history.push('/signup'); 
@@ -100,6 +121,10 @@ const Login = () => {
             <div className="login-container">
                 <form className='login-form'>
                     <div className='inputs-container'>
+                    <div onClick={handleDeleteInput} className={`input-icon ${showCloseIcon ? 'show' : ''}`}>
+                        <DeleteInput/>
+                    </div>
+
                         <TextField
                         className='inputs'
                         label="username"
@@ -108,6 +133,7 @@ const Login = () => {
                         error={usernameError}
                         helperText={usernameErrorMsg}
                         onChange={handleUsernameChange}
+                        value={username}
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
@@ -117,10 +143,20 @@ const Login = () => {
                     </div>
 
                     <div className='inputs-container'>
+                    <div onClick={handleTogglePasswordVisibility} className={`password-icon ${showPassword ? 'show' : ''}`}>
+                        <IconButton
+                            edge='end'
+                            aria-label='toggle password visibility'
+                            style={{ color: '#CAC4D0' , marginBottom:'8px'}} 
+                        >
+                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                        </IconButton>
+                    </div>
+
                         <TextField 
                         className='inputs' 
                         label="password"
-                        type="password" 
+                        type={showPassword ? 'text' : 'password'} 
                         placeholder='password'
                         autoComplete="current-password" 
                         variant="filled"
@@ -130,7 +166,8 @@ const Login = () => {
                         InputLabelProps={{
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
-                        }}   
+                        }}  
+
                         />
                     </div>
                     
