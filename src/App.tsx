@@ -49,8 +49,8 @@ const App: React.FC = () => {
           <Route path="/create">
             {isUserAuthenticated ? <Create /> : <Redirect to="/login" /> }
           </Route>
-          <Route path="/signup">
-            <Signup/>
+          <Route exact path="/signup">
+            {isUserAuthenticated ? <Redirect to="/todos" /> : <Signup/>}
           </Route>
           <Redirect from="/" to="/login" />
         </Switch>

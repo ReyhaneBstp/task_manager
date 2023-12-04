@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from "../../provider/AppContext";
 import { generateFakeToken } from "../../auth/AuthService";
 import { validateEmail , validatePassword , validatePhone , validateUsername } from "../../utilities/validateInputs";
-
+import { useHistory } from 'react-router-dom';
 
 interface User {
   username: string;
@@ -19,6 +19,7 @@ interface User {
 }
 
 const Signup :  React.FC = () => {
+  const history = useHistory();
   const {allUsers} = useAppContext() as {allUsers : User[]};
   const [usernameError, setUsernameError]  = useState <boolean>(false);
   const [usernameErrorMsg, setUsernameErrorMsg] = useState <string>('');
@@ -58,6 +59,10 @@ const Signup :  React.FC = () => {
       emailValidation.isValid && phoneValidation.isValid 
     );
   };
+
+  const goToLoigin :() => void = ()=>{
+    history.push('/login'); 
+}
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -92,6 +97,7 @@ const Signup :  React.FC = () => {
       const fakeToken = generateFakeToken(newFormData);
       localStorage.setItem('token', fakeToken);
       console.log('User signed up :', response.data);
+      history.push('./todos');
     } catch (error) {
       console.error('Error signing up:', error);
     }
@@ -173,7 +179,7 @@ const Signup :  React.FC = () => {
         </form>
         <div className='button-box'>
           <CustomButton button_title={"sign up"} onClick={handleSignUp}></CustomButton>
-          <span className="account-text">do you have any account?</span>
+          <span onClick={goToLoigin} className="account-text">do you have any account?</span>
         </div>
       </div>
     </PageContainer>

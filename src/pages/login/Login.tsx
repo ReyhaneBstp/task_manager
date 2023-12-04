@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+import { useState  , useEffect} from 'react';
 import PageContainer from '../../components/page container/PageContainer';
 import CustomButton from '../../components/custom button/CustomButton';
 import './login.scss'
@@ -7,6 +7,7 @@ import { useAppContext } from '../../provider/AppContext';
 import { generateFakeToken } from '../../auth/AuthService';
 import { useHistory } from 'react-router-dom';
 import { validateUsername , validatePassword } from '../../utilities/validateInputs';
+import  axios  from 'axios';
 
 interface User {
     username: string;
@@ -23,8 +24,21 @@ const Login = () => {
     const [usernameErrorMsg, setUsernameErrorMsg] = useState <string>('');
     const [passwordError, setPasswordError] = useState <boolean>(false);
     const [passwordErrorMsg, setPasswordErrorMsg] = useState <string>('');
-    const {allUsers , setGlobalUser} = useAppContext() as {allUsers: User[] , setGlobalUser: React.Dispatch<React.SetStateAction<User>>};
+    const {allUsers , setGlobalUser , setAllUsers} = useAppContext() as {allUsers: User[] , setGlobalUser: React.Dispatch<React.SetStateAction<User>> , setAllUsers: React.Dispatch<React.SetStateAction<User[]>>};
     const history = useHistory();
+
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+          try {
+            const response = await axios.get('http://localhost:3000/users');
+            setAllUsers(response.data);
+          } catch (error) {
+            console.error('Error fetching users:', error);
+          }
+        };
+        fetchUsers();
+      }, []);
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);   
@@ -32,6 +46,10 @@ const Login = () => {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value); 
     };
+
+    const goToSignup :() => void = ()=>{
+        history.push('/signup'); 
+    }
 
     const validateInput = () => {
 
@@ -58,7 +76,9 @@ const Login = () => {
             (user) =>user.username === username && user.password === password
         );
         
-        if (user) {
+        if (user) {   
+            console.log(user);
+            
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
             localStorage.setItem('isAuthenticated', 'true');
@@ -118,7 +138,7 @@ const Login = () => {
                 
                 <div className='button-box'>
                     <CustomButton button_title={"login"} onClick={handleLogin}></CustomButton>
-                    <span>dont have any account?</span>
+                    <span onClick={goToSignup}>dont have any account?</span>
                 </div>
             </div>
         </PageContainer>
