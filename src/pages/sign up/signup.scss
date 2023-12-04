@@ -28,3 +28,11 @@
         }
     }
 }
+
+.MuiFilledInput-underline:before {
+    border-bottom: none !important;
+  }
+  
+  .MuiFilledInput-underline:after {
+    border-bottom: 1px solid #D0BCFF !important;
+  }

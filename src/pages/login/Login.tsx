@@ -112,6 +112,7 @@ const Login = () => {
                             style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
                             shrink: true,
                         }} 
+                        sx={{ borderBottom: 'none' }}
                         />   
                     </div>
 
