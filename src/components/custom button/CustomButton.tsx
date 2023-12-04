@@ -1,6 +1,11 @@
 import { Button } from "@mui/material";
 import './customButton.scss'
-const CustomButton = ({ button_title, onClick }) => {
+
+interface CustomButtonProps {
+    button_title: string;
+    onClick: () => void;
+  }
+const CustomButton = ({ button_title, onClick }: CustomButtonProps) => {
     return (  
         <Button  onClick={onClick} className="custom-button">
             <span className="button-title">

@@ -8,17 +8,31 @@
         @include formStyle;
         height: 300px;
 
-        .inputs{
+        .MuiInputBase-input{
             @include inputStyles;
         }
     }
-    .button-box {
+    .button-box{
 
-        .account-text{
+        height: 60px;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        span{
             cursor: pointer;
             color: #D0BCFF;
-            width:max-content;
-
+        }
+        .account-text:hover{
+            transition: 0.8s;
+            color:#E6E0E9;
         }
     }
 }
+
+.MuiFilledInput-underline:before {
+    border-bottom: none !important;
+  }
+  
+  .MuiFilledInput-underline:after {
+    border-bottom: 1px solid #D0BCFF !important;
+  }

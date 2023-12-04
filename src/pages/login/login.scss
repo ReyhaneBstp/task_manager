@@ -7,31 +7,34 @@
         .login-form{
         @include formStyle;
         .inputs-container{
-            .inputs{
-                @include inputStyles;
-            }
             .MuiInputBase-input{
-                color: #E6E0E9;
-            }
-            .MuiInputBase-input::placeholder{
-                color: var(--m-3-sys-dark-on-surface, #E6E0E9);
-                font-family: Roboto;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 24px; 
-                letter-spacing: 0.5px;    
+                @include inputStyles;
             }
         }   
     }
     .button-box{
+
+        height: 60px;
+        justify-content: space-between;
         display: flex;
         flex-direction: column;
+
         span{
-            margin-top: 10px;
             cursor: pointer;
-            color: #D0BCFF;
-            
+            color: #D0BCFF; 
+        }
+        .account-text:hover{
+            transition: 0.8s;
+            color:#E6E0E9;
         }
     }
 }
+
+
+.MuiFilledInput-underline:before {
+    border-bottom: none !important;
+  }
+  
+  .MuiFilledInput-underline:after {
+    border-bottom: 1px solid #D0BCFF !important;
+  }

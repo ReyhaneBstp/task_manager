@@ -5,6 +5,19 @@
     top: 0;
     display: flex;
     justify-content: center;
+
+    .backicon{
+        position:absolute ;
+        left: 27px;
+        top: 27px;
+        cursor: pointer;
+    }
+    .nexticon{
+        position: absolute;
+        right: 27px;
+        top: 27px;
+        cursor: pointer;
+    }
     
     .page-title {
         color: var(--m-3-sys-dark-on-surface, #E6E0E9);
@@ -16,5 +29,6 @@
         line-height: 32px; 
         align-self: stretch; 
         position: inherit; 
+        margin-top: 24px;
     }
 }
