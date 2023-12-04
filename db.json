@@ -2,7 +2,7 @@
   "tasks": [
     {
       "title": "Exercise for 80 minutes",
-      "priority": 2,
+      "priority": "high",
       "status": true,
       "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b6a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
@@ -10,7 +10,7 @@
     },
     {
       "title": "Exercise for 90 minutes",
-      "priority": 2,
+      "priority": "medium",
       "status": true,
       "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
@@ -18,7 +18,7 @@
     },
     {
       "title": "Exercise for 40 minutes",
-      "priority": 2,
+      "priority": "low",
       "status": false,
       "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b064999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
@@ -26,42 +26,42 @@
     },
     {
       "title": "Exercise for 50 minutes",
-      "priority": 2,
+      "priority": "medium",
       "status": true,
       "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a499c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "Exercise for 60 minutes",
-      "priority": 2,
+      "priority": "low",
       "status": true,
       "id": "9h2aca21-a8f5-4f8d-975-bd20b06a4999c",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "read a book",
-      "priority": "3",
+      "priority": "low",
       "status": true,
       "id": "9cd8f273-2a08-4d08-a647-8d31806e1917",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "play football",
-      "priority": "2",
+      "priority": "high",
       "status": true,
       "id": "a306b4b1-253a-402b-a4df-dff00d078bca",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "listen to music",
-      "priority": "5",
-      "status": false,
+      "priority": "high",
+      "status": true,
       "id": "e6af41e6-14d3-4939-b487-0f7ce7520dc7",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "task #4",
-      "priority": "3",
+      "priority": "medium",
       "status": false,
       "taskId": "cf3e6bd7-71e1-45f9-8e23-a89bf9a3f6a5",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
@@ -69,42 +69,42 @@
     },
     {
       "title": "task #4",
-      "priority": "4",
+      "priority": "high",
       "status": false,
       "id": "5de00503-8a59-40a8-9349-40b3d582ace7",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "task #5",
-      "priority": "2",
+      "priority": "high",
       "status": false,
       "id": "1b234b0d-93c6-4c7f-8d49-d6520b1fec92",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "task # 6",
-      "priority": "3",
+      "priority": "medium",
       "status": false,
       "id": "419f6a04-6513-47f6-8777-f895e9fa40e0",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "task #7",
-      "priority": "1",
+      "priority": "low",
       "status": true,
       "id": "98f3b3c7-dec5-489c-bebd-d201f18c2a9d",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
     },
     {
       "title": "task #7",
-      "priority": "1",
+      "priority": "low",
       "status": false,
       "id": "cc61c803-1cc4-49d8-b760-d53bda7daad6",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
       "title": "lkjijk",
-      "priority": "2",
+      "priority": "low",
       "status": false,
       "id": "c1e5d4e7-2728-497b-a984-cbb1af2ce5a3",
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
@@ -190,11 +190,19 @@
     },
     {
       "title": "task # 2n",
-      "priority": "high",
+      "priority": "low",
       "status": true,
       "taskId": "416c2ef2-5585-4d3e-99b2-a5969eb1757b",
       "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
       "id": "416c2ef2-5585-4d3e-99b2-a5969eb1757b"
+    },
+    {
+      "title": "task n",
+      "priority": "high",
+      "status": true,
+      "taskId": "a1589cda-881d-4429-93b2-723de1535a59",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "a1589cda-881d-4429-93b2-723de1535a59"
     }
   ],
   "users": [

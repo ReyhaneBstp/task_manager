@@ -6,6 +6,7 @@ import { validateTaskTitle , validateTaskPriority } from "../../utilities/valida
 import axios from "axios";
 import { TextField, Button } from '@mui/material';
 import CustomButton from "../../components/custom button/CustomButton";
+import { Select, MenuItem } from '@mui/material';
 import './edit.scss'
 
 interface Task {
@@ -31,13 +32,15 @@ const Edit = () => {
     const {currentTask} = useAppContext() as {currentTask:Task};
     
     useEffect(() => {
+        console.log(currentTask);
+        
         setTaskId(currentTask?.id);
         setTaskName(currentTask?.title);
         setTaskId(currentTask?.id);
         setUserId(currentTask?.userId);
         setPriority(currentTask?.priority);
         setStatus(currentTask?.status);
-       }, []);
+    }, []);
        
  
     
@@ -105,21 +108,33 @@ const Edit = () => {
                     </div>
 
                     <div className='inputs-container'>
-                    <TextField
-                        className='inputs'
-                        label="priority"
-                        placeholder='priority'
-                        variant="filled"
-                        value={priority}
-                        error={priorityError}
-                        helperText={priorityErrorMsg}
-                        onChange={handlePriorityChange}
-                        InputLabelProps={{
-                            style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
-                            shrink: true,
-                        }} 
-                        /> 
+                        <div className="input-title"> priority</div>
+                        <Select 
+                            className='select-proprity'
+                            label="priority"
+                            value={priority}
+                            onChange={handlePriorityChange}
+                            displayEmpty
+                            variant="filled"
+                            error={priorityError}
+                            helperText={priorityErrorMsg}
+                            InputLabelProps={{
+                                style: { color: 'var(--m-3-sys-dark-primary, #D0BCFF)'},
+                                shrink: true,
+                            }}
+                            sx={{
+                                textAlign:'left'
+                    
+                            }}
+                        >
+                            <MenuItem  className="menu-item" value="" disabled>Select Priority</MenuItem>
+                            <MenuItem className="menu-item" value="low">Low</MenuItem>
+                            <MenuItem className="menu-item" value="medium">Medium</MenuItem>
+                            <MenuItem className="menu-item" value="high">High</MenuItem>
+                        </Select>
+                        {priorityError && <p className="error-message">{priorityErrorMsg}</p>}
                     </div>
+
 
                     
                 </form>
