@@ -77,8 +77,7 @@ const Login = () => {
         );
         
         if (user) {   
-            console.log(user);
-            
+        
             const fakeToken = generateFakeToken(user);
             localStorage.setItem('token', fakeToken);
             localStorage.setItem('isAuthenticated', 'true');

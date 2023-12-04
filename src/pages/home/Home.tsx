@@ -40,7 +40,6 @@ const Home : React.FC = () => {
 
     const handleCheckboxChange = async (title:string , priority: string , status:boolean , id: string, userId : string) => {
         try {
-            console.log(id);
             await axios.put(`http://localhost:3000/tasks/${id}`, {title,priority,status,id,userId });
             const response = await axios.get(`http://localhost:3000/tasks?userId=${userId}`);
             setAllTasks(response.data);
