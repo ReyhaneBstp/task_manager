@@ -32,17 +32,26 @@ const Edit = () => {
     const {currentTask} = useAppContext() as {currentTask:Task};
     
     useEffect(() => {
-        console.log(currentTask);
-        
-        setTaskId(currentTask?.id);
-        setTaskName(currentTask?.title);
-        setTaskId(currentTask?.id);
-        setUserId(currentTask?.userId);
-        setPriority(currentTask?.priority);
-        setStatus(currentTask?.status);
-    }, []);
+
+        const storedTask = localStorage.getItem('editTask');
+        if (storedTask) {
+            const parsedTask = JSON.parse(storedTask);
+            setTaskId(parsedTask.id);
+            setTaskName(parsedTask.title);
+            setUserId(parsedTask.userId);
+            setPriority(parsedTask.priority);
+            setStatus(parsedTask.status);
+        } else {
+            setTaskId(currentTask?.id);
+            setTaskName(currentTask?.title);
+            setUserId(currentTask?.userId);
+            setPriority(currentTask?.priority);
+            setStatus(currentTask?.status);
+        }
+    }, [currentTask]);
        
  
+
     
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

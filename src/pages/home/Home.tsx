@@ -52,6 +52,11 @@ const Home : React.FC = () => {
         try {
             const response = await axios.get(`http://localhost:3000/tasks?id=${taskId}`);
             setcurrentTask(response.data[0]);
+            const title = response.data[0].title;
+            const userId = response.data[0].userId;
+            const priority = response.data[0].priority;
+            const status = response.data[0].status;
+            localStorage.setItem('editTask', JSON.stringify({ id: taskId, title, userId, priority, status }));
             history.push('/edit');
             
           } catch (error) {
