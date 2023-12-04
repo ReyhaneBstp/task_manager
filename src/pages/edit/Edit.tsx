@@ -96,7 +96,7 @@ const Edit = () => {
     
 
     return (  
-        <PageContainer title="edit task" page="edit">
+        <PageContainer title={"edit  "+title} page="edit">
              <div className="create-container">
                 <form className='create-form'>
                     <div className='inputs-container'>
