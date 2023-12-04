@@ -35,6 +35,10 @@ import { useHistory } from "react-router-dom";
     history.push('/login');
   }
 
+  const handlebackToHome : () => void = () => {
+    history.push('/todos');
+  }
+
     return ( 
         <GrayBox>
           <div className="title-container">
@@ -52,9 +56,13 @@ import { useHistory } from "react-router-dom";
             
             <h1 className="page-title">{title}</h1>
 
-            <div className="nexticon">
-              {(page=== "create" || page ==="edit") && <NextIcon/>}
-            </div>
+
+            { (page ==="create"  || page ==="edit") &&
+              <div className="nexticon" onClick={handlebackToHome}>
+               <NextIcon/>
+             </div>
+            }
+
             
           </div>
             {children}

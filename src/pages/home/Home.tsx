@@ -6,6 +6,7 @@ import { useAppContext } from '../../provider/AppContext';
 import  Checkbox  from '@mui/material/Checkbox';
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 interface User {
@@ -25,12 +26,13 @@ interface User {
 
 const Home : React.FC = () => {
 
+    const history = useHistory();
     const {user , allTasks , setAllTasks } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>>};
     const [startIndex, setstartIndex] = useState<number>(0);
     const eachPage: number = 3;
 
     const handleAdd :()=>void = ()=>{
-        console.log("add"); 
+        history.push('/create'); 
     }
     const handleChange =(e: React.ChangeEvent<unknown>, page: number) =>{
         setstartIndex((page-1)*eachPage );

@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useAppContext } from '../../provider/AppContext';
 import { validateTaskTitle , validateTaskPriority } from "../../utilities/validateInputs";
 import { Select, MenuItem } from '@mui/material';
-import { blue } from "@material-ui/core/colors";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -27,6 +27,7 @@ const Create = () => {
     const [titleErrorMsg, setTitleErrorMsg] = useState <string>('');
     const [priorityError, setPriorityError] = useState <boolean>(false);
     const [priorityErrorMsg, setPriorityErrorMsg] = useState <string>('');
+    const history = useHistory();
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTaskName(e.target.value);   
@@ -67,7 +68,7 @@ const Create = () => {
         }
         try {
             await axios.post(`http://localhost:3000/tasks`, data);
-            console.log('created');
+            history.push('/todos');
             
         } catch (error) {
             console.error('Error updating task status:', error);
@@ -109,7 +110,7 @@ const Create = () => {
                                 shrink: true,
                             }}
                             sx={{
-                                textAlign:'left',
+                                textAlign:'left'
                     
                             }}
                         >
