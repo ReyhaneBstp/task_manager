@@ -1,11 +1,8 @@
 import { BrowserRouter as Router, Route, Switch , Redirect } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import { useAppContext } from './provider/AppContext';
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
-import { useEffect } from 'react';
 import './App.css'
-import axios from 'axios';
 import Create from './pages/create/Create';
 import Signup from './pages/sign up/Signup';
 
@@ -19,21 +16,6 @@ const theme = createTheme({
 const App: React.FC = () => { 
 
   const isUserAuthenticated  : boolean= localStorage.getItem('isAuthenticated') === 'true';
-  const {setAllUsers}=useAppContext();
-  
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/users');
-        setAllUsers(response.data);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    };
-    fetchUsers();
-  }, []);
-  
 
 
   return (
