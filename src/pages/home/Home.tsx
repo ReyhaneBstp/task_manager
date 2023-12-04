@@ -27,7 +27,7 @@ interface User {
 const Home : React.FC = () => {
 
     const history = useHistory();
-    const {user , allTasks , setAllTasks , setcurrentTask } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>> , setcurrentTask: React.Dispatch<React.SetStateAction<Task | null>>};
+    const {user , allTasks , setAllTasks  } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>> };
     const [startIndex, setstartIndex] = useState<number>(0);
     const eachPage: number = 3;
 
@@ -51,7 +51,6 @@ const Home : React.FC = () => {
      const handleSelectTask =  async (taskId: string)  => {
         try {
             const response = await axios.get(`http://localhost:3000/tasks?id=${taskId}`);
-            setcurrentTask(response.data[0]);
             const title = response.data[0].title;
             const userId = response.data[0].userId;
             const priority = response.data[0].priority;

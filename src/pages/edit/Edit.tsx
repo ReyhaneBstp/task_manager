@@ -77,7 +77,7 @@ const Edit = () => {
     };
 
     const handleEdit : () => void = async () => {
-        console.log(taskId);
+
         
 
         if (!validateInput()) {
@@ -86,9 +86,8 @@ const Edit = () => {
         try {
             await axios.put(`http://localhost:3000/tasks/${taskId}`, {title,priority,status,taskId,userId });
             history.push('/todos');
-            console.log("edited");
-            
-            
+            localStorage.removeItem('editTask');
+      
         } catch (error) {
             console.error('Error updating task status:', error);
         } 
@@ -96,7 +95,7 @@ const Edit = () => {
     
 
     return (  
-        <PageContainer title={"edit  "+title} page="edit">
+        <PageContainer title={"Edit  "+title} page="edit">
              <div className="create-container">
                 <form className='create-form'>
                     <div className='inputs-container'>
@@ -149,7 +148,7 @@ const Edit = () => {
                 </form>
                 
                 <div className='button-box'>
-                    <CustomButton button_title={"edit"}  onClick={handleEdit}></CustomButton>
+                    <CustomButton button_title={"save"}  onClick={handleEdit}></CustomButton>
                 </div>
                 </div>
                 

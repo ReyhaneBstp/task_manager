@@ -46,55 +46,12 @@
       "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
     },
     {
-      "title": "play football",
-      "priority": "high",
-      "status": false,
-      "taskId": "a306b4b1-253a-402b-a4df-dff00d078bca",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
-      "id": "a306b4b1-253a-402b-a4df-dff00d078bca"
-    },
-    {
       "title": "listen to music",
-      "priority": "high",
-      "status": false,
-      "id": "e6af41e6-14d3-4939-b487-0f7ce7520dc7",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
-    },
-    {
-      "title": "task #4",
-      "priority": "low",
-      "status": false,
-      "taskId": "cf3e6bd7-71e1-45f9-8e23-a89bf9a3f6a5",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
-      "id": "cf3e6bd7-71e1-45f9-8e23-a89bf9a3f6a5"
-    },
-    {
-      "title": "task #4",
-      "priority": "high",
-      "status": false,
-      "id": "5de00503-8a59-40a8-9349-40b3d582ace7",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
-    },
-    {
-      "title": "task #5",
-      "priority": "high",
-      "status": false,
-      "id": "1b234b0d-93c6-4c7f-8d49-d6520b1fec92",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
-    },
-    {
-      "title": "task # 6",
       "priority": "medium",
       "status": false,
-      "id": "419f6a04-6513-47f6-8777-f895e9fa40e0",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
-    },
-    {
-      "title": "task #7",
-      "priority": "low",
-      "status": true,
-      "id": "98f3b3c7-dec5-489c-bebd-d201f18c2a9d",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+      "taskId": "e6af41e6-14d3-4939-b487-0f7ce7520dc7",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "e6af41e6-14d3-4939-b487-0f7ce7520dc7"
     },
     {
       "title": "task #7",
@@ -148,10 +105,11 @@
     },
     {
       "title": "a task",
-      "priority": "low",
-      "status": false,
-      "id": "c0180c96-5b60-45d9-9aee-59031f3c4203",
-      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+      "priority": "medium",
+      "status": true,
+      "taskId": "c0180c96-5b60-45d9-9aee-59031f3c4203",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "c0180c96-5b60-45d9-9aee-59031f3c4203"
     },
     {
       "title": "samane's task",
