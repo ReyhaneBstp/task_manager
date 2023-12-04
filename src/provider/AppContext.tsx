@@ -7,6 +7,8 @@ interface AppContextType {
   setAllUsers: (users: User[] | null) => void;
   allTasks: Task[] | null;
   setAllTasks : (tasks:Task[] | null) => void;
+  currentTask : Task | null;
+  setcurrentTask : (task : Task | null) => void;
 }
 
 interface User {
@@ -35,6 +37,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [user, setUser] = useState<User | null>(decodedToken);
   const [allUsers, setAllUsers] = useState<User[] | null>(null);
   const [allTasks , setAllTasks] = useState<Task[] | null>(null);
+  const [currentTask, setcurrentTask] = useState <Task | null>(null);
 
 
 
@@ -50,6 +53,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setAllUsers,
     allTasks,
     setAllTasks,
+    currentTask,
+    setcurrentTask,
     
   };
 

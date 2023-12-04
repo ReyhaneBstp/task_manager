@@ -27,7 +27,7 @@ interface User {
 const Home : React.FC = () => {
 
     const history = useHistory();
-    const {user , allTasks , setAllTasks } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>>};
+    const {user , allTasks , setAllTasks , setcurrentTask } = useAppContext() as {user:User , allTasks: Task[] , setAllTasks: React.Dispatch<React.SetStateAction<Task[]>> , setcurrentTask: React.Dispatch<React.SetStateAction<Task | null>>};
     const [startIndex, setstartIndex] = useState<number>(0);
     const eachPage: number = 3;
 
@@ -47,6 +47,18 @@ const Home : React.FC = () => {
             console.error('Error updating task status:', error);
         }
     };
+
+     const handleSelectTask =  async (taskId: string)  => {
+        try {
+            const response = await axios.get(`http://localhost:3000/tasks?id=${taskId}`);
+            setcurrentTask(response.data[0]);
+            history.push('/edit');
+            
+          } catch (error) {
+            console.error('Error fetching tasks:', error);
+          }
+        
+    }
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -79,8 +91,8 @@ const Home : React.FC = () => {
                             <>
                             
                             {index>=startIndex && index<startIndex+eachPage &&
-                            <div className="task-box">
-                                <div className='task-info'>
+                            <div className="task-box" >
+                                <div className='task-info' onClick={() => handleSelectTask(task.id)}>
                                     <div className='task-icon'>A</div>
                                     <div className='task-title' key={task.id}>{task.title}</div>
                                 </div>

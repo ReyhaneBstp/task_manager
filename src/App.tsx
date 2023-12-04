@@ -8,6 +8,7 @@ import './App.css'
 import axios from 'axios';
 import Create from './pages/create/Create';
 import Signup from './pages/sign up/Signup';
+import Edit from './pages/edit/Edit';
 
 const theme = createTheme({
   palette: {
@@ -48,6 +49,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/create">
             {isUserAuthenticated ? <Create /> : <Redirect to="/login" /> }
+          </Route>
+          <Route path="/edit">
+            {isUserAuthenticated ? <Edit /> : <Redirect to="/login" /> }
           </Route>
           <Route path="/signup">
             <Signup/>
