@@ -9,14 +9,9 @@ import { useAppContext } from "../../provider/AppContext";
 import { generateFakeToken } from "../../auth/AuthService";
 import { validateEmail , validatePassword , validatePhone , validateUsername } from "../../utilities/validateInputs";
 import { useHistory } from 'react-router-dom';
+import { User } from "../../models/Users";
 
-interface User {
-  username: string;
-  password:string;
-  email: string;
-  phone:string;
-  id:string;
-}
+
 
 const Signup :  React.FC = () => {
   const history = useHistory();

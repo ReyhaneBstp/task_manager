@@ -12,14 +12,9 @@ import DeleteInput from '../../icons/DeleteInput';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
+import { User } from '../../models/Users';
 
-interface User {
-    username: string;
-    password: string;
-    email: string;
-    phone:string;
-    id:string;
-}
+
 
 const Login = () => {
     const [username, setUsername] = useState <string>('');

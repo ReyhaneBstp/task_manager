@@ -8,14 +8,9 @@ import { TextField, Button } from '@mui/material';
 import CustomButton from "../../components/custom button/CustomButton";
 import { Select, MenuItem } from '@mui/material';
 import './edit.scss'
+import { Task } from "../../models/Task";
 
-interface Task {
-    title: string;
-    priority:string;
-    status:boolean;
-    id:string;
-    userId:string;
-  }
+
 
 const Edit = () => {
 

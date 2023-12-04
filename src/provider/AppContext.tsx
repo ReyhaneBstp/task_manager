@@ -1,5 +1,8 @@
 import { createContext, useContext, ReactNode, useState } from 'react'
 import { jwtDecode } from 'jwt-decode';
+import { Task } from '../models/Task';
+import { User } from '../models/Users';
+
 interface AppContextType {
   user: User | null;
   setGlobalUser: (user: User | null) => void;
@@ -9,22 +12,6 @@ interface AppContextType {
   setAllTasks : (tasks:Task[] | null) => void;
   currentTask : Task | null;
   setcurrentTask : (task : Task | null) => void;
-}
-
-interface User {
-  username: string;
-  password: string;
-  email: string;
-  phone:string;
-  id:string;
-}
-
-interface Task {
-  title: string;
-  priority:string;
-  status:boolean;
-  id:string;
-  userId:string;
 }
 
 

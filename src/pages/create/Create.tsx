@@ -9,16 +9,10 @@ import { useAppContext } from '../../provider/AppContext';
 import { validateTaskTitle , validateTaskPriority } from "../../utilities/validateInputs";
 import { Select, MenuItem } from '@mui/material';
 import { useHistory } from "react-router-dom";
+import { User } from "../../models/Users";
 
 
 
-interface User {
-    username: string;
-    password : string;
-    email: string;
-    phone: string;
-    id:string;
-}
 const Create = () => {
     const {user } = useAppContext() as { user: User };
     const [title, setTaskName] = useState <string>('');

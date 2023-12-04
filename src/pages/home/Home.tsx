@@ -8,21 +8,9 @@ import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import { User } from "../../models/Users";
+import { Task } from "../../models/Task";
 
-interface User {
-    username: string;
-    email: string;
-    phone:string;
-    id:string;
-  }
-  
-  interface Task {
-    title: string;
-    priority:string;
-    status:boolean;
-    id:string;
-    userId:string;
-  }
 
 const Home : React.FC = () => {
 
