@@ -1,22 +1,396 @@
 {
-  "posts": [
+  "tasks": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "Exercise for 80 minutes",
+      "priority": "high",
+      "status": true,
+      "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b6a4999c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b6a4999c"
+    },
+    {
+      "title": "Exercise for 90 minutes",
+      "priority": "medium",
+      "status": true,
+      "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a4999c"
+    },
+    {
+      "title": "Exercise for 40 minutes",
+      "priority": "low",
+      "status": false,
+      "taskId": "9h2aca21-a8f5-4f8d-b975-bd20b064999c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b064999c"
+    },
+    {
+      "title": "Exercise for 50 minutes",
+      "priority": "medium",
+      "status": true,
+      "id": "9h2aca21-a8f5-4f8d-b975-bd20b06a499c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "Exercise for 60 minutes",
+      "priority": "low",
+      "status": true,
+      "id": "9h2aca21-a8f5-4f8d-975-bd20b06a4999c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "read a book",
+      "priority": "low",
+      "status": true,
+      "id": "9cd8f273-2a08-4d08-a647-8d31806e1917",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "listen to music",
+      "priority": "medium",
+      "status": false,
+      "taskId": "e6af41e6-14d3-4939-b487-0f7ce7520dc7",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "e6af41e6-14d3-4939-b487-0f7ce7520dc7"
+    },
+    {
+      "title": "task #7",
+      "priority": "low",
+      "status": false,
+      "id": "cc61c803-1cc4-49d8-b760-d53bda7daad6",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "lkjijk",
+      "priority": "low",
+      "status": true,
+      "id": "c1e5d4e7-2728-497b-a984-cbb1af2ce5a3",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "pizza",
+      "priority": "medium",
+      "status": true,
+      "id": "a28bce0d-2c75-437b-a3b6-9529d1a5cf1a",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "eating launch",
+      "priority": "low",
+      "status": false,
+      "taskId": "656156f2-d5d7-40d6-8238-68ef70a0c7d6",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "656156f2-d5d7-40d6-8238-68ef70a0c7d6"
+    },
+    {
+      "title": "close the door",
+      "priority": "high",
+      "status": false,
+      "id": "c92e2b9b-3516-4264-88ca-69353d6948ce",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "eating launch",
+      "priority": "high",
+      "status": false,
+      "id": "ca894e44-dd05-4556-8c6b-44ba21bf3be1",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+    },
+    {
+      "title": "task #2",
+      "priority": "high",
+      "status": false,
+      "taskId": "4c92dd1c-e1a8-4ba1-96b6-fe84352728ce",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "4c92dd1c-e1a8-4ba1-96b6-fe84352728ce"
+    },
+    {
+      "title": "a task",
+      "priority": "medium",
+      "status": true,
+      "taskId": "c0180c96-5b60-45d9-9aee-59031f3c4203",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "c0180c96-5b60-45d9-9aee-59031f3c4203"
+    },
+    {
+      "title": "samane's task",
+      "priority": "medium",
+      "status": false,
+      "id": "6cedba61-5fe2-4dd0-b00d-709e32ec665f",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+    },
+    {
+      "title": "eat launch",
+      "priority": "low",
+      "status": true,
+      "id": "619d9b1c-34b0-4be6-895c-a26b90ff057d",
+      "userId": "11dc6867-c635-4b52-97f3-4b5332504a45"
+    },
+    {
+      "title": "drink a cup of tea",
+      "priority": "medium",
+      "status": false,
+      "id": "2e05abf2-ee17-434e-ae34-a3abaf000c3c",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "title": "play footbal",
+      "priority": "medium",
+      "status": true,
+      "id": "80b7f506-bd45-4faa-b9b8-0857426c5098",
+      "userId": "7d914990-1e90-4d84-83fd-865954d19772"
+    },
+    {
+      "title": "new task2",
+      "priority": "medium",
+      "status": false,
+      "taskId": "4d1c0947-187c-4f50-ae4e-9137bafe749b",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "4d1c0947-187c-4f50-ae4e-9137bafe749b"
+    },
+    {
+      "title": "task # 2n",
+      "priority": "low",
+      "status": true,
+      "taskId": "416c2ef2-5585-4d3e-99b2-a5969eb1757b",
+      "userId": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c",
+      "id": "416c2ef2-5585-4d3e-99b2-a5969eb1757b"
+    },
+    {
+      "title": "task n",
+      "priority": "high",
+      "status": true,
+      "taskId": "a1589cda-881d-4429-93b2-723de1535a59",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "a1589cda-881d-4429-93b2-723de1535a59"
+    },
+    {
+      "title": "qq",
+      "priority": "medium",
+      "status": true,
+      "taskId": "04fde8c8-7e31-4b12-b6b0-b9936b24206e",
+      "userId": "27a18898-b5df-4d83-b898-9ee542a149d8",
+      "id": "04fde8c8-7e31-4b12-b6b0-b9936b24206e"
+    },
+    {
+      "title": "task # 2n",
+      "priority": "medium",
+      "status": true,
+      "taskId": "7b160701-02ce-4514-b983-32fe7b2082da",
+      "userId": "50d66b35-152e-407e-9035-73a97410fce1",
+      "id": "7b160701-02ce-4514-b983-32fe7b2082da"
+    },
+    {
+      "title": "task # n",
+      "priority": "high",
+      "status": true,
+      "id": "bb1c52d5-27c8-41af-8ece-b668424b35b4",
+      "userId": "50d66b35-152e-407e-9035-73a97410fce1"
+    },
+    {
+      "title": "close the door",
+      "priority": "high",
+      "status": false,
+      "id": "c8ae4ff3-4518-4758-b0a0-601299866ace",
+      "userId": "50d66b35-152e-407e-9035-73a97410fce1"
     }
   ],
-  "comments": [
+  "users": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "username": "samane",
+      "password": "123",
+      "email": "kjhkhukh",
+      "phone": "675757",
+      "id": "8b2aca21-a8f5-4f8d-b975-d20b06a4999c"
+    },
+    {
+      "username": "jkkjhjkguyjhfdytu",
+      "password": "",
+      "email": "kjgvbhyjlgikgyk",
+      "phone": "khgbkgubikgjb",
+      "id": "8fc3a59d-3ede-4841-9c9d-4482bd729539"
+    },
+    {
+      "username": "kl",
+      "password": "y",
+      "email": "jkj",
+      "phone": "kkk",
+      "id": "673da091-3b52-408b-ac0f-00af6b2c77b6"
+    },
+    {
+      "username": "kljmkljmnkl",
+      "password": "",
+      "email": "",
+      "phone": "",
+      "id": "088aad14-c282-41b3-a69f-b9c43eb1c850"
+    },
+    {
+      "username": "reyhane",
+      "password": "000",
+      "email": "reyhane.bstp@gmail.com",
+      "phone": "12345678",
+      "id": "f14c804b-8cc3-4a77-af4a-9683bf31e0a8"
+    },
+    {
+      "username": "zahra",
+      "password": "1111",
+      "email": "afsane@gmail.com",
+      "phone": "123456789",
+      "id": "27a18898-b5df-4d83-b898-9ee542a149d8"
+    },
+    {
+      "username": "hoda",
+      "password": "1111",
+      "email": "hoda@mail.com",
+      "phone": "45655768876",
+      "id": "70e6639e-f818-4f39-ae29-bacad1a44bf8"
+    },
+    {
+      "username": "jnkn",
+      "password": "jlbjlbk;hbl",
+      "email": "ujh@jhbjbjk.com",
+      "phone": "786756345",
+      "id": "877ce933-74e9-4cd9-9585-2d5f215eb173"
+    },
+    {
+      "username": "jnknb",
+      "password": "jlbjlbk;hbl",
+      "email": "ujh@jhbjbjk.com",
+      "phone": "786756345",
+      "id": "5824508a-fb0b-4992-a804-e1601b776ac1"
+    },
+    {
+      "username": "klnkj/nk/jnh'kj",
+      "password": "7768568",
+      "email": "hjgbhu@nbhj.com",
+      "phone": "56452686",
+      "id": "0b3e39bd-f844-4a60-857a-b0659d4a1b02"
+    },
+    {
+      "username": "klhjvbjv kkj",
+      "password": "7768568",
+      "email": "hjgbhu@nbhj.com",
+      "phone": "56452686",
+      "id": "dc89e6b6-a8f7-44cd-bb85-a13bf2eab4d2"
+    },
+    {
+      "username": "klhjvbjvjkb ",
+      "password": "7768568",
+      "email": "hjgbhu@nbhj.com",
+      "phone": "56452686",
+      "id": "78c6bbd7-bac5-489f-ae13-93a077965c62"
+    },
+    {
+      "username": "klhjvbjvbnjm ",
+      "password": "7768568",
+      "email": "hjgbhu@nbhj.com",
+      "phone": "56452686",
+      "id": "06cbc5ed-c7c0-473f-ae05-9873becd7aec"
+    },
+    {
+      "username": "jkih tdersjkk",
+      "password": "656r76",
+      "email": "rey@gmail.com",
+      "phone": "67565657",
+      "id": "be516756-2bfe-4ecf-a63f-36c36db54ff2"
+    },
+    {
+      "username": "ubhbiuhi",
+      "password": "jhgbhjugbyuhj",
+      "email": "xitaxid809@mustbeit.com",
+      "phone": "09034584783",
+      "id": "55a92950-bbc4-4ceb-ad8f-cb5ff780c227"
+    },
+    {
+      "username": "mio mio",
+      "password": "jhgbhjugbyuhj",
+      "email": "xitaxid809@mustbeit.com",
+      "phone": "09034584783",
+      "id": "b3d734da-0468-4e5f-88de-60939e6a9b0d"
+    },
+    {
+      "username": "ali",
+      "password": "gholi",
+      "email": "nanana@nanana.com",
+      "phone": "78657545",
+      "id": "f4a3dbca-c3b7-4050-91df-295af2983532"
+    },
+    {
+      "username": "hamid",
+      "password": "vahid",
+      "email": "hjbj@mail.com",
+      "phone": "786536575",
+      "id": "a71a3be7-53a4-4f6b-be55-dfd9836bd9e7"
+    },
+    {
+      "username": "javad",
+      "password": "javid",
+      "email": "huigbyjsg@kmail.com",
+      "phone": "786357378",
+      "id": "b2a65b58-5aa2-4a70-a4e0-3db21f3e7c3e"
+    },
+    {
+      "username": "mohammad ali",
+      "password": "aaaa",
+      "email": "ali@gmail.com",
+      "phone": "01234567890",
+      "id": "c7d1dbe8-8f0e-4ca9-ab18-5e287760ca32"
+    },
+    {
+      "username": "shaghayegh",
+      "password": "123",
+      "email": "age@mail.com",
+      "phone": "12345678",
+      "id": "00bdc2d1-d553-407f-af34-a8966a619fa9"
+    },
+    {
+      "username": "hasan",
+      "password": "hasan",
+      "email": "hasan@gmail.com",
+      "phone": "123456789",
+      "id": "dbfee1d9-eb19-4d42-8298-13fe0537c27f"
+    },
+    {
+      "username": "reyhaneh",
+      "password": "111",
+      "email": "reyhane.bstp@gmail.com",
+      "phone": "01234567890",
+      "id": "0702d939-be67-4f2c-9d66-ac12efabf406"
+    },
+    {
+      "username": "mina",
+      "password": "m",
+      "email": "reyhane.bstp@gmail.com",
+      "phone": "01234567890",
+      "id": "778c6fa1-680f-40d9-8b07-9dcd616ff5f0"
+    },
+    {
+      "username": "sara",
+      "password": "sara",
+      "email": "sara@gmail.com",
+      "phone": "33333333",
+      "id": "50d66b35-152e-407e-9035-73a97410fce1"
+    },
+    {
+      "username": "sima",
+      "password": "1111",
+      "email": "reyhane.bstp@gmail.com",
+      "phone": "01234567890",
+      "id": "11dc6867-c635-4b52-97f3-4b5332504a45"
+    },
+    {
+      "username": "mahla",
+      "password": "mahla",
+      "email": "mahla@gmail.com",
+      "phone": "12345678",
+      "id": "f4acb8f5-9317-405a-9589-516fab97eeae"
+    },
+    {
+      "username": "mohi",
+      "password": "19",
+      "email": "mohi@gmail.com",
+      "phone": "125636237",
+      "id": "7d914990-1e90-4d84-83fd-865954d19772"
     }
-  ],
-  "profile": {
-    "username": "sam",
-    "password": "123",
-    "email": "age@mail.com",
-    "phone": "213541"
-  }
+  ]
 }
